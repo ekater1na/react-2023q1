@@ -3,14 +3,14 @@ import './App.css';
 import Header from './components/Header/Header';
 import { Route, Routes } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import WelcomePage from "./pages/WelcomePage/WelcomePage";
+import MainPage from "./pages/MainPage/MainPage";
 
 function App() {
   return (
     <div className="container">
       <Header />
       <Routes>
-        <Route index element={<WelcomePage />} />
+        <Route index element={<MainPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
