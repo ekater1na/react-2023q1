@@ -1,0 +1,14 @@
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #96e198;
+  height: 100px;
+
+  .navbar-list {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+}
