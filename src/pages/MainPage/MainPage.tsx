@@ -1,12 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class MainPage extends Component {
   render() {
-    return (
-      <div>
-        MainPage
-      </div>
-    );
+    return <div>MainPage</div>;
   }
 }
 

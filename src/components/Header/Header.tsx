@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import './Header.scss';
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
   render() {
     return (
       <header className="header-wrapper">
         <nav>
-          <ul className='navbar-list'>
+          <ul className="navbar-list">
             <li>
-              <a href="/">Main</a>
+              <NavLink to="/" style={({ isActive }) => (isActive ? { color: 'red' } : {})}>
+                Main
+              </NavLink>
             </li>
             <li>
-              <a href="/about">About</a>
+              <NavLink to="/about" style={({ isActive }) => (isActive ? { color: 'red' } : {})}>
+                About
+              </NavLink>
             </li>
             <li>
-              <a href="/404">404</a>
+              <NavLink to="/404" style={({ isActive }) => (isActive ? { color: 'red' } : {})}>
+                404
+              </NavLink>
             </li>
           </ul>
         </nav>
