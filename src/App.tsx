@@ -9,7 +9,9 @@ import AboutPage from './pages/AboutPage/AboutPage';
 function App() {
   return (
     <div className="container">
-      <Header />
+      <div className="header-container">
+        <Header />
+      </div>
       <div className="app-container">
         <Routes>
           <Route index element={<MainPage />} />

@@ -1,15 +1,16 @@
+@import  '../../index.scss';
+
 .header-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background: #96e198;
-  height: 100px;
+  background: $green-color;
+  height: 100%;
 
   .navbar-list {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 30px;
     font-size: 2rem;
   }
 }
