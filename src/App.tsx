@@ -10,11 +10,13 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <Routes>
-        <Route index element={<MainPage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <div className="app-container">
+        <Routes>
+          <Route index element={<MainPage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
     </div>
   );
 }
