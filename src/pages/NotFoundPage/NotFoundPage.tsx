@@ -4,7 +4,7 @@ import './NotFoundPage.scss';
 class NotFoundPage extends Component {
   render() {
     return (
-      <div className="not-found-wrapper">
+      <div className="not-found-page-wrapper">
         <span>404</span>
       </div>
     );

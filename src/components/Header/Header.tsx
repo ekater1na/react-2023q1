@@ -9,17 +9,17 @@ class Header extends Component {
         <nav>
           <ul className="navbar-list">
             <li>
-              <NavLink to="/" style={({ isActive }) => (isActive ? { color: 'red' } : {})}>
+              <NavLink to="/" style={({ isActive }) => (isActive ? { color: 'blue' } : {})}>
                 Main
               </NavLink>
             </li>
             <li>
-              <NavLink to="/about" style={({ isActive }) => (isActive ? { color: 'red' } : {})}>
+              <NavLink to="/about" style={({ isActive }) => (isActive ? { color: 'blue' } : {})}>
                 About
               </NavLink>
             </li>
             <li>
-              <NavLink to="/404" style={({ isActive }) => (isActive ? { color: 'red' } : {})}>
+              <NavLink to="/404" style={({ isActive }) => (isActive ? { color: 'blue' } : {})}>
                 404
               </NavLink>
             </li>
