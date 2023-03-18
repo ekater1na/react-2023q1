@@ -34,7 +34,7 @@ class CardItem extends Component<ComponentProps> {
                 <p className="card__price-only">Location:</p>
                 <p className="card__price-value">{location.name}</p>
               </div>
-              <a href="#" className="btn btn--white">
+              <a href="components/CardItem/CardItem#" className="btn btn--white">
                 Visit
               </a>
             </div>

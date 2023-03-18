@@ -1,6 +1,6 @@
 import React, { ChangeEvent, Component, FormEvent } from 'react';
 import './MainPage.scss';
-import CardItem from '../../assets/CardItem/CardItem';
+import CardItem from '../../components/CardItem/CardItem';
 import characters from '../../consts/characters.json';
 import { Character } from '../../models/character';
 
