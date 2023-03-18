@@ -11,7 +11,7 @@ class CardItem extends Component<ComponentProps> {
     const { image, name, species, status, gender, location } = this.props.item;
 
     return (
-      <div className="col-1-of-3">
+      <div className="col-1-of-3" data-testid="card">
         <div className="card">
           <div className="card__side card__side--front-3">
             <div className="card__title card__title--3">
