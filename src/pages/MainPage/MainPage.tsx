@@ -9,7 +9,6 @@ class MainPage extends Component {
 
   componentWillUnmount() {
     localStorage.setItem('Search', this.state.searchValue ? this.state.searchValue : '');
-    console.log('componentWillUnmount');
   }
 
   onFormChange(e: ChangeEvent<HTMLInputElement>) {
