@@ -5,7 +5,7 @@ class AboutPage extends Component {
   render() {
     return (
       <div className="about-page-wrapper">
-        <span>AboutPage</span>
+        <span>About</span>
       </div>
     );
   }
