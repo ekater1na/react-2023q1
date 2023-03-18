@@ -13,4 +13,12 @@
     gap: 30px;
     font-size: 2rem;
   }
+
+  .active {
+    color: white;
+
+    &:before {
+      content: 'Location: ';
+    }
+  }
 }
