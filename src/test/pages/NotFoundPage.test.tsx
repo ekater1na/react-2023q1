@@ -1,10 +1,10 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect } from 'vitest';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 
 describe('NotFoundPage', () => {
-  test('should be shown', () => {
+  it('should be shown', () => {
     render(<NotFoundPage />);
 
     expect(screen.getByTestId(/not-found-page/i)).toBeTruthy();
