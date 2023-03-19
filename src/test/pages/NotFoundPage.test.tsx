@@ -7,6 +7,7 @@ describe('NotFoundPage', () => {
   test('should be shown', () => {
     render(<NotFoundPage />);
 
+    expect(screen.getByTestId(/not-found-page/i)).toBeTruthy();
     expect(screen.getByText(/404/i)).toBeDefined();
   });
 });
