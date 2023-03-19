@@ -8,7 +8,7 @@ import AboutPage from './pages/AboutPage/AboutPage';
 
 function App() {
   return (
-    <div className="container">
+    <div className="container" data-testid="app">
       <div className="header-container">
         <Header />
       </div>

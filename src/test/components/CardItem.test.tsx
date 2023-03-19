@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect } from 'vitest';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import CardItem from '../../components/CardItem/CardItem';
@@ -25,7 +25,7 @@ describe('CardItem', () => {
     created: '2017-11-04T20:56:13.215Z',
   };
 
-  test('should be shown', () => {
+  it('should be shown', () => {
     render(<CardItem item={mockItem} />);
 
     expect(screen.getByTestId('card')).toBeDefined();
