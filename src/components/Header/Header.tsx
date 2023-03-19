@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 class Header extends Component {
   render() {
     return (
-      <header className="header-wrapper">
+      <header className="header-wrapper" data-testid="header">
         <nav>
           <ul className="navbar-list">
             <li>
