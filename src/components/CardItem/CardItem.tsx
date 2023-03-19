@@ -14,10 +14,10 @@ class CardItem extends Component<ComponentProps> {
       <div className="col-1-of-3" data-testid="card">
         <div className="card">
           <div className="card__side card__side--front-3">
-            <div className="card__title card__title--3">
+            <div className="card__title">
               <img className="card__image" src={image} alt={name}></img>
-              <h4 className="card__heading">{name}</h4>
             </div>
+            <h4 className="card__heading truncate">{name}</h4>
 
             <div className="card__details">
               <ul>

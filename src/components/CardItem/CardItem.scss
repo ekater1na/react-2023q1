@@ -69,7 +69,7 @@
 
 .card__title {
   height: 20rem;
-  padding: 4rem 2rem 2rem;
+  padding: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -91,8 +91,9 @@
   text-transform: uppercase;
   text-align: center;
   color: #fff;
-  width: 100%;
   line-height: 1.2;
+  width: 100%;
+  padding: 0 15px;
 }
 
 .card__heading-span {
@@ -106,23 +107,21 @@
 }
 
 .card__details {
-  padding: 1rem;
-}
+  & ul {
+    list-style: none;
+    width: 80%;
+    margin: 0 auto;
+  }
 
-.card__details ul {
-  list-style: none;
-  width: 80%;
-  margin: 0 auto;
-}
+  & ul li {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 0.75rem;
+  }
 
-.card__details ul li {
-  text-align: center;
-  font-size: 1.5rem;
-  padding: 1rem;
-}
-
-.card__details ul li:not(:last-child) {
-  border-bottom: 1px solid #eee;
+  & ul li:not(:last-child) {
+    border-bottom: 1px solid #eee;
+  }
 }
 
 .card__cta {
