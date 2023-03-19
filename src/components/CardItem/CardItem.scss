@@ -3,11 +3,11 @@
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  height: 48rem;
+  height: 42rem;
 }
 
 .card__side {
-  height: 46rem;
+  height: 40rem;
   -webkit-transition: all 0.8s ease;
   transition: all 0.8s ease;
   position: absolute;
@@ -106,7 +106,7 @@
 }
 
 .card__details {
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .card__details ul {
@@ -155,27 +155,27 @@
 .row {
   max-width: 114rem;
   margin: 0 auto;
-}
 
-.row:not(:last-child) {
-  margin-bottom: 5rem;
-  margin-top: 5rem;
-}
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
 
-.row::after {
-  content: '';
-  display: table;
-  clear: both;
-}
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
 
-.row [class^='col-'] {
-  float: left;
-}
+  & [class^='col-'] {
+    float: left;
+  }
 
-.row [class^='col-']:not(:last-child) {
-  margin-right: 6rem;
-}
+  & [class^='col-']:not(:last-child) {
+    margin-right: 6rem;
+  }
 
-.row .col-1-of-3 {
-  width: calc((100% - 2 * 6rem) / 3);
+  & .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3);
+  }
 }
