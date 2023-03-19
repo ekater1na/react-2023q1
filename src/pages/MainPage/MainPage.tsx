@@ -21,7 +21,7 @@ class MainPage extends Component {
 
   render() {
     return (
-      <div className="main-page-wrapper">
+      <div className="main-page-wrapper" data-testid="main-page">
         <section className="section-plans" id="section-plans">
           <div className="u-center-text u-margin-bottom-big">
             <h2 className="heading-secondary">Characters</h2>

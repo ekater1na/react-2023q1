@@ -7,6 +7,7 @@ describe('AboutPage', () => {
   test('should be shown', () => {
     render(<AboutPage />);
 
+    expect(screen.getByTestId(/about-page/i)).toBeTruthy();
     expect(screen.getByText(/About/i)).toBeDefined();
   });
 });
