@@ -1,3 +1,5 @@
+@import '../../index.scss';
+
 .card {
   -webkit-perspective: 150rem;
   perspective: 150rem;
@@ -104,6 +106,7 @@
 
 .card__image {
   height: 150px;
+  border: 3px groove $white-color;
 }
 
 .card__details {
