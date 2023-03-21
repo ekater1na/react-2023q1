@@ -11,22 +11,23 @@ class FormCard extends Component<FormCardProps> {
     const { firstName, lastName, birthDay, country, sex, photo } = this.props.user;
 
     return (
-      <div className="form-card" data-testid="form-card">
-        <li className="form-cards_item" id="item_salad">
-          <div className="form-card">
-            <div className="form-card_price">{country}</div>
-            <div className="form-card_image">
-              <img src={photo} alt={lastName}></img>
+      <div className="grid__item" data-testid="form-card">
+        <div className="card">
+          <img className="card__img" src={photo} alt={lastName} />
+          <div className="card__content">
+            <h1 className="card__header">
+              {firstName} {lastName}
+            </h1>
+            <div className="card__info">
+              <p className="card__text">{birthDay}</p>
+              <p className="card__text">{country}</p>
+              <p className="card__text">{sex}</p>
             </div>
-            <div className="form-card_content">
-              <h2 className="form-card_title">{firstName}</h2>
-              <div className="form-card_text">
-                <p>{birthDay}</p>
-                <p>{sex}</p>
-              </div>
-            </div>
+            <button className="card__btn">
+              Follow <span>&rarr;</span>
+            </button>
           </div>
-        </li>
+        </div>
       </div>
     );
   }

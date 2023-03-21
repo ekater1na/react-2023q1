@@ -1,6 +1,8 @@
 import React, { Component, createRef, FormEvent } from 'react';
 import './Form.scss';
 import { User } from '../../models/user';
+import { countries } from '../../consts/countries';
+import { Country } from '../../models/country';
 
 interface FormProps {
   setFormData: (value: User) => void;
@@ -43,9 +45,9 @@ class Form extends Component<FormProps, FormState> {
     this.agreement = createRef();
   }
 
-  handleSubmit = (event: FormEvent) => {
+  handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    this.setState({
+    await this.setState({
       formData: {
         id: Math.random(),
         firstName: this.firstName.current?.value,
@@ -58,7 +60,7 @@ class Form extends Component<FormProps, FormState> {
       },
     });
 
-    this.props.setFormData(this.state.formData);
+    await this.props.setFormData(this.state.formData);
     console.log('handleSubmit', this.state.formData);
   };
 
@@ -69,10 +71,11 @@ class Form extends Component<FormProps, FormState> {
         <input type="text" ref={this.lastName} placeholder="Last name" />
         <input type="date" ref={this.birthDay} placeholder="Birthday" />
         <select ref={this.country} placeholder="Country">
-          <option>select country</option>
-          <option value="AF">Afghanistan</option>
-          <option value="AX">Aland Islands</option>
-          <option value="AL">Albania</option>
+          {countries.map((item: Country) => (
+            <option key={item.value} value={item.value}>
+              {item.name}
+            </option>
+          ))}
         </select>
         <>
           <label htmlFor="sex">Male</label>

@@ -1,89 +1,75 @@
-.form-cards_item {
-  display: flex;
-  padding: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.form-card_image {
-  max-height: 250px;
-  margin-top: -24px;
-  img {
-    width: 100%;
-    max-width: 800px;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &:after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100px;
-    position: relative;
-    top: -100px;
-    background: linear-gradient(0deg, #091014 10%, rgba(0, 0, 0, 0) 100%);
-  }
-}
-
-.form-card {
-  background-color: #091014;
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
+.grid__item {
+  background: linear-gradient(-45deg, #00dbde, #fc00ff);
   overflow: hidden;
-}
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 4px;
+  width: 370px;
 
-.form-card_content {
-  padding: 1rem;
-  z-index: 1;
-  display: block;
-}
-
-.form-card_title {
-  font-family: 'Lobster', cursive;
-  font-size: 72px;
-  line-height: 72px;
-  margin-top: -50px;
-  margin-bottom: 24px;
-  text-shadow: black 1px 0 15px;
-  color: white;
-}
-
-.form-card_text {
-  color: #dddacb;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 200;
-  p {
-    max-width: 700px;
+  &:hover {
+    transform: translateY(-0.5%);
+    box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.2);
   }
-}
 
-.form-card_price {
-  position: relative;
-  top: 10px;
-  right: 16px;
-  text-align: right;
-  color: white;
-  font-family: 'Raleway', sans-serif;
-  height: 24px;
-  font-size: 36px;
-  font-weight: 400;
-  text-shadow: black 3px 0 6px;
-}
+  .card {
+    .card__img {
+      display: block;
+      width: 170px;
+      height: 18rem;
+      border-radius: 50%;
+      margin: 0 auto;
+      padding-top: 10px;
+    }
+    .card__content {
+      padding: 3rem 3rem;
 
-#item_fig .form-card:after {
-  content: 'Seasonal';
-  font-family: 'Raleway', sans-serif;
-  color: rgba(234, 225, 175, 0.8);
-  font-weight: 600;
-  text-transform: uppercase;
-  display: block;
-  width: 10ch;
-  height: 1.5em;
-  padding: 0.2em 0.4em;
-  position: relative;
-  bottom: calc(100% - 2.5em);
-  left: 1em;
+      .card__info {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .card__header {
+      font-size: 3rem;
+      font-weight: 500;
+      color: #0d0d0d;
+      margin-bottom: 1.5rem;
+    }
+
+    .card__text {
+      font-size: 1.5rem;
+      letter-spacing: 0.1rem;
+      line-height: 1.7;
+      color: #3d3d3d;
+      margin-bottom: 2.5rem;
+    }
+
+    .card__btn {
+      display: block;
+      width: 100%;
+      padding: 1.5rem;
+      font-size: 2rem;
+      text-align: center;
+      color: #3363ff;
+      background-color: #e6ecff;
+      border: none;
+      border-radius: 0.4rem;
+      transition: 0.2s;
+      cursor: pointer;
+
+      & span {
+        margin-left: 1rem;
+        transition: 0.2s;
+      }
+      &:hover,
+      &:active {
+        background-color: #dce4ff;
+      }
+      &:hover span,
+      &:active span {
+        margin-left: 1.5rem;
+      }
+    }
+  }
 }
