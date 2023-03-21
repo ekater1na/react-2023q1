@@ -16,6 +16,7 @@
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     align-items: start;
   }
+
   @media (max-width: 60em) {
     .grid {
       grid-gap: 3rem;
