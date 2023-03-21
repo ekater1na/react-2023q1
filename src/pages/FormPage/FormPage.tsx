@@ -1,5 +1,7 @@
 import React, { Component, createRef, FormEvent } from 'react';
 import './FormPage.scss';
+import { User } from '../../models/user';
+import FormCard from '../../components/FormCard/FormCard';
 
 class FormPage extends Component {
   private readonly firstName: React.RefObject<HTMLInputElement>;
@@ -9,6 +11,7 @@ class FormPage extends Component {
   private readonly sex: React.RefObject<HTMLInputElement>;
   private readonly photo: React.RefObject<HTMLInputElement>;
   private readonly agreement: React.RefObject<HTMLInputElement>;
+  private users: User[] = [];
 
   constructor(props: string) {
     super(props);
@@ -23,7 +26,8 @@ class FormPage extends Component {
 
   handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const User = {
+    const user = {
+      id: Math.random(),
       firstName: this.firstName.current?.value,
       lastName: this.lastName.current?.value,
       birthDay: this.birthDay.current?.value,
@@ -32,7 +36,9 @@ class FormPage extends Component {
       photo: this.photo.current?.value,
       agreement: this.agreement.current?.value,
     };
-    console.log('handleSubmit', User);
+
+    this.users.push(user);
+    console.log('handleSubmit', this.users);
   };
 
   render() {
@@ -46,7 +52,7 @@ class FormPage extends Component {
             <option>select country</option>
             <option value="AF">Afghanistan</option>
             <option value="AX">Aland Islands</option>
-            <option value="AL">Albania</option>{' '}
+            <option value="AL">Albania</option>
           </select>
           <>
             <label htmlFor="sex">Male</label>
@@ -55,13 +61,13 @@ class FormPage extends Component {
           <input type="file" ref={this.photo} placeholder="Photo" />
           <>
             <input type="checkbox" id="agreement" ref={this.agreement} placeholder="agreement" />
-
             <label htmlFor="agreement">
-              I consent to my personal data (User can choose severalitems from the list)
+              I consent to my personal data (User can choose several items from the list)
             </label>
           </>
           <input type="submit" value="Submit" />
         </form>
+        {this.users && this.users.map((user: User) => <FormCard key={user.id} user={user} />)}
       </div>
     );
   }
