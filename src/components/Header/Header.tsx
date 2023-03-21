@@ -14,6 +14,11 @@ class Header extends Component {
               </NavLink>
             </li>
             <li>
+              <NavLink to="/forms" style={({ isActive }) => (isActive ? { color: 'white' } : {})}>
+                Forms
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/about" style={({ isActive }) => (isActive ? { color: 'white' } : {})}>
                 About
               </NavLink>
