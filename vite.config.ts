@@ -10,6 +10,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     coverage: {
+      provider: 'c8',
       all: true,
       include: ['src/**/*.tsx'],
     },
