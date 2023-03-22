@@ -78,15 +78,23 @@ class Form extends Component<FormProps, FormState> {
           ))}
         </select>
         <div className="field-row">
-          <input type="radio" id="sex" ref={this.sex} placeholder="Sex" />
-          <label htmlFor="sex">Male</label>
+          <div className="field-row">
+            <input type="radio" id="sex" ref={this.sex} placeholder="Sex" name="sex" />
+            <label htmlFor="sex">Male</label>
+          </div>
+          <div className="field-row">
+            <input type="radio" id="sex" ref={this.sex} placeholder="Sex" name="sex" />
+            <label htmlFor="sex">Female</label>
+          </div>
         </div>
         <input type="file" ref={this.photo} placeholder="Photo" />
         <div className="field-row">
           <input type="checkbox" id="agreement" ref={this.agreement} placeholder="agreement" />
-          <label htmlFor="agreement">
-            I consent to my personal data (User can choose several items from the list)
-          </label>
+          <label htmlFor="agreement">I consent to my personal data</label>
+        </div>
+        <div className="field-row">
+          <input type="checkbox" id="agreement" ref={this.agreement} placeholder="agreement" />
+          <label htmlFor="agreement">I consent to my personal data</label>
         </div>
         <input type="submit" value="Submit" />
       </form>
