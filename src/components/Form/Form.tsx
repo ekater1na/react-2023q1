@@ -4,15 +4,21 @@ import { User } from '../../models/user';
 import { countries } from '../../consts/countries';
 import { Country } from '../../models/country';
 
+interface FormErrors {
+  [key: string]: string | boolean | undefined | number;
+}
+
 interface FormProps {
   setFormData: (value: User) => void;
 }
 
 interface FormState {
   formData: User;
+  errors: FormErrors;
 }
 
 class Form extends Component<FormProps, FormState> {
+  private readonly form: React.RefObject<HTMLFormElement>;
   private readonly firstName: React.RefObject<HTMLInputElement>;
   private readonly lastName: React.RefObject<HTMLInputElement>;
   private readonly birthDay: React.RefObject<HTMLInputElement>;
@@ -21,21 +27,30 @@ class Form extends Component<FormProps, FormState> {
   private readonly photo: React.RefObject<HTMLInputElement>;
   private readonly agreement: React.RefObject<HTMLInputElement>;
 
+  errorMessage = 'Please add data';
+
   constructor(props: FormProps) {
     super(props);
 
     this.state = {
       formData: {
-        id: 0,
+        id: '',
         firstName: '',
         lastName: '',
         birthDay: '',
         country: '',
         sex: '',
         photo: '',
-        agreement: '',
+        agreement: false,
       },
+      errors: {},
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.hasError = this.hasError.bind(this);
+
+    this.form = createRef();
     this.firstName = createRef();
     this.lastName = createRef();
     this.birthDay = createRef();
@@ -45,29 +60,82 @@ class Form extends Component<FormProps, FormState> {
     this.agreement = createRef();
   }
 
-  handleSubmit = async (event: FormEvent) => {
-    event.preventDefault();
+  async setFormState() {
     await this.setState({
       formData: {
-        id: Math.random(),
+        id: Math.random().toString(),
         firstName: this.firstName.current?.value,
         lastName: this.lastName.current?.value,
         birthDay: this.birthDay.current?.value,
         country: this.country.current?.value,
         sex: this.sex.current?.value,
-        photo: this.photo.current?.value,
-        agreement: this.agreement.current?.value,
+        photo:
+          (this.photo.current?.files as FileList)[0] !== undefined
+            ? URL.createObjectURL((this.photo.current?.files as FileList)[0])
+            : require(`../../assets/default.jpg`),
+        agreement: this.agreement.current?.checked,
       },
+      errors: {},
     });
+  }
+
+  async validateField(fieldName: string) {
+    if (!this.state.formData[fieldName]) {
+      await this.setState({
+        errors: { ...this.state.errors, [fieldName]: this.state.formData[fieldName] },
+      });
+    }
+  }
+
+  async validate() {
+    await this.setFormState();
+    await this.validateField('firstName');
+    await this.validateField('lastName');
+    await this.validateField('birthDay');
+    await this.validateField('country');
+    await this.validateField('sex');
+    await this.validateField('photo');
+    await this.validateField('agreement');
+  }
+
+  handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const name = event.target.name;
+    this.setState({
+      errors: { ...this.state.errors, [name]: undefined },
+    });
+  }
+
+  hasError() {
+    return !(
+      this.state.errors.firstName === '' ||
+      this.state.errors.lastName === '' ||
+      this.state.errors.birthDay === '' ||
+      this.state.errors.country === '' ||
+      this.state.errors.sex === '' ||
+      this.state.errors.photo === '' ||
+      this.state.errors.agreement === '' ||
+      Object.keys(this.state.errors).length === 0
+    );
+  }
+
+  handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    await this.validate();
+    if (Object.keys(this.state.errors).length === 0) {
+      await this.setFormState();
+    }
 
     await this.props.setFormData(this.state.formData);
     console.log('handleSubmit', this.state.formData);
+    this.form.current?.reset();
   };
 
   render() {
     return (
-      <form className="form" onSubmit={this.handleSubmit} data-testid="form">
+      <form className="form" onSubmit={this.handleSubmit} ref={this.form} data-testid="form">
         <input type="text" ref={this.firstName} placeholder="First name" />
+        {this.state.errors.firstName && <p>{this.errorMessage}</p>}
+
         <input type="text" ref={this.lastName} placeholder="Last name" />
         <input type="date" ref={this.birthDay} placeholder="Birthday" />
         <select ref={this.country} placeholder="Country">
@@ -92,11 +160,7 @@ class Form extends Component<FormProps, FormState> {
           <input type="checkbox" id="agreement" ref={this.agreement} placeholder="agreement" />
           <label htmlFor="agreement">I consent to my personal data</label>
         </div>
-        <div className="field-row">
-          <input type="checkbox" id="agreement" ref={this.agreement} placeholder="agreement" />
-          <label htmlFor="agreement">I consent to my personal data</label>
-        </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" disabled={this.hasError()} />
       </form>
     );
   }
