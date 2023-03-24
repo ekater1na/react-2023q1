@@ -61,7 +61,7 @@ class Form extends Component<FormProps, FormState> {
   }
 
   async setFormState() {
-    await this.setState({
+    this.setState({
       formData: {
         id: Math.random().toString(),
         firstName: this.firstName.current?.value,
@@ -123,21 +123,38 @@ class Form extends Component<FormProps, FormState> {
     await this.validate();
     if (Object.keys(this.state.errors).length === 0) {
       await this.setFormState();
+      await this.props.setFormData(this.state.formData);
+      this.form.current?.reset();
     }
-
-    await this.props.setFormData(this.state.formData);
-    console.log('handleSubmit', this.state.formData);
-    this.form.current?.reset();
   };
 
   render() {
     return (
       <form className="form" onSubmit={this.handleSubmit} ref={this.form} data-testid="form">
-        <input type="text" ref={this.firstName} placeholder="First name" />
-        {this.state.errors.firstName && <p>{this.errorMessage}</p>}
+        <input
+          type="text"
+          ref={this.firstName}
+          placeholder="First name"
+          onChange={this.handleChange}
+        />
+        {this.state.errors.firstName !== undefined && <p>{this.errorMessage}</p>}
 
-        <input type="text" ref={this.lastName} placeholder="Last name" />
-        <input type="date" ref={this.birthDay} placeholder="Birthday" />
+        <input
+          type="text"
+          ref={this.lastName}
+          placeholder="Last name"
+          onChange={this.handleChange}
+        />
+        {this.state.errors.lastName !== undefined && <p>{this.errorMessage}</p>}
+
+        <input
+          type="date"
+          ref={this.birthDay}
+          placeholder="Birthday"
+          onChange={this.handleChange}
+        />
+        {this.state.errors.birthDay !== undefined && <p>{this.errorMessage}</p>}
+
         <select ref={this.country} placeholder="Country">
           {countries.map((item: Country) => (
             <option key={item.value} value={item.value}>
@@ -145,22 +162,47 @@ class Form extends Component<FormProps, FormState> {
             </option>
           ))}
         </select>
+
         <div className="field-row">
           <div className="field-row">
-            <input type="radio" id="sex" ref={this.sex} placeholder="Sex" name="sex" />
+            <input
+              type="radio"
+              id="sex"
+              ref={this.sex}
+              placeholder="Sex"
+              name="sex"
+              onChange={this.handleChange}
+              checked
+            />
             <label htmlFor="sex">Male</label>
           </div>
+
           <div className="field-row">
             <input type="radio" id="sex" ref={this.sex} placeholder="Sex" name="sex" />
             <label htmlFor="sex">Female</label>
           </div>
         </div>
-        <input type="file" ref={this.photo} placeholder="Photo" />
+
+        <input type="file" ref={this.photo} placeholder="Photo" onChange={this.handleChange} />
+        {this.state.errors.photo !== undefined && <p>{this.errorMessage}</p>}
+
         <div className="field-row">
-          <input type="checkbox" id="agreement" ref={this.agreement} placeholder="agreement" />
+          <input
+            type="checkbox"
+            id="agreement"
+            ref={this.agreement}
+            placeholder="agreement"
+            onChange={this.handleChange}
+          />
           <label htmlFor="agreement">I consent to my personal data</label>
         </div>
-        <input type="submit" value="Submit" disabled={this.hasError()} />
+        {this.state.errors.agreement !== undefined && <p>{this.errorMessage}</p>}
+
+        <input
+          type="submit"
+          value="Submit"
+          // disabled={this.hasError()}
+        />
       </form>
     );
   }
