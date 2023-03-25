@@ -137,7 +137,9 @@ class Form extends Component<FormProps, FormState> {
           placeholder="First name"
           onChange={this.handleChange}
         />
-        {this.state.errors.firstName !== undefined && <p>{this.errorMessage}</p>}
+        {this.state.errors.firstName !== undefined && (
+          <p className="error-message">{this.errorMessage}</p>
+        )}
 
         <input
           type="text"
@@ -145,7 +147,9 @@ class Form extends Component<FormProps, FormState> {
           placeholder="Last name"
           onChange={this.handleChange}
         />
-        {this.state.errors.lastName !== undefined && <p>{this.errorMessage}</p>}
+        {this.state.errors.lastName !== undefined && (
+          <p className="error-message">{this.errorMessage}</p>
+        )}
 
         <input
           type="date"
@@ -153,7 +157,9 @@ class Form extends Component<FormProps, FormState> {
           placeholder="Birthday"
           onChange={this.handleChange}
         />
-        {this.state.errors.birthDay !== undefined && <p>{this.errorMessage}</p>}
+        {this.state.errors.birthDay !== undefined && (
+          <p className="error-message">{this.errorMessage}</p>
+        )}
 
         <select ref={this.country} placeholder="Country">
           {countries.map((item: Country) => (
@@ -184,7 +190,9 @@ class Form extends Component<FormProps, FormState> {
         </div>
 
         <input type="file" ref={this.photo} placeholder="Photo" onChange={this.handleChange} />
-        {this.state.errors.photo !== undefined && <p>{this.errorMessage}</p>}
+        {this.state.errors.photo !== undefined && (
+          <p className="error-message">{this.errorMessage}</p>
+        )}
 
         <div className="field-row">
           <input
@@ -196,7 +204,9 @@ class Form extends Component<FormProps, FormState> {
           />
           <label htmlFor="agreement">I consent to my personal data</label>
         </div>
-        {this.state.errors.agreement !== undefined && <p>{this.errorMessage}</p>}
+        {this.state.errors.agreement !== undefined && (
+          <p className="error-message">{this.errorMessage}</p>
+        )}
 
         <input
           type="submit"

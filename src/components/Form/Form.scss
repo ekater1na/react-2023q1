@@ -44,4 +44,14 @@
     align-items: center;
     gap: 5px;
   }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+
+    &:before {
+      content: '*';
+      padding-right: 5px;
+    }
+  }
 }
