@@ -5,7 +5,7 @@ import { countries } from '../../consts/countries';
 import { Country } from '../../models/country';
 
 interface FormErrors {
-  [key: string]: string | boolean | undefined | number;
+  [key: string]: string | number | boolean | FileList | undefined;
 }
 
 interface FormProps {
@@ -40,7 +40,7 @@ class Form extends Component<FormProps, FormState> {
         birthDay: '',
         country: '',
         sex: '',
-        photo: '',
+        photo: {} as FileList,
         agreement: false,
       },
       errors: {},
@@ -72,7 +72,7 @@ class Form extends Component<FormProps, FormState> {
         photo:
           (this.photo.current?.files as FileList)[0] !== undefined
             ? URL.createObjectURL((this.photo.current?.files as FileList)[0])
-            : require(`../../assets/default.jpg`),
+            : '',
         agreement: this.agreement.current?.checked,
       },
       errors: {},
@@ -124,6 +124,7 @@ class Form extends Component<FormProps, FormState> {
     if (Object.keys(this.state.errors).length === 0) {
       await this.setFormState();
       await this.props.setFormData(this.state.formData);
+      console.log('this.state.formData', this.state.formData);
       this.form.current?.reset();
     }
   };
@@ -178,13 +179,22 @@ class Form extends Component<FormProps, FormState> {
               placeholder="Sex"
               name="sex"
               onChange={this.handleChange}
+              value="male"
               checked
             />
             <label htmlFor="sex">Male</label>
           </div>
 
           <div className="field-row">
-            <input type="radio" id="sex" ref={this.sex} placeholder="Sex" name="sex" />
+            <input
+              type="radio"
+              id="sex"
+              ref={this.sex}
+              placeholder="Sex"
+              name="sex"
+              onChange={this.handleChange}
+              value="female"
+            />
             <label htmlFor="sex">Female</label>
           </div>
         </div>

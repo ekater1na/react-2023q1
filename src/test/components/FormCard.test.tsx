@@ -6,14 +6,14 @@ import { User } from '../../models/user';
 
 describe('FormCard', () => {
   const mockUser: User = {
-    id: 0,
+    id: '0',
     firstName: 'string',
     lastName: 'string',
     birthDay: 'string',
     country: 'string',
     sex: 'string',
     photo: 'string',
-    agreement: 'string',
+    agreement: true,
   };
   it('should be shown', () => {
     render(<FormCard user={mockUser} />);
