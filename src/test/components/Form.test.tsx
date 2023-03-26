@@ -6,14 +6,14 @@ import { User } from '../../models/user';
 
 describe('Form', () => {
   const mockFormData: User = {
-    id: 0,
+    id: '0',
     firstName: 'string',
     lastName: 'string',
     birthDay: 'string',
     country: 'string',
     sex: 'string',
     photo: 'string',
-    agreement: 'string',
+    agreement: true,
   };
 
   const setFormData = (value: User) => {

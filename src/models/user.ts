@@ -5,7 +5,7 @@ export interface User {
   birthDay: string | undefined;
   country: string | undefined;
   sex: string | undefined;
-  photo: string | undefined;
+  photo: FileList | string | undefined;
   agreement: boolean | undefined;
-  [key: string]: string | boolean | undefined;
+  [key: string]: string | boolean | undefined | FileList;
 }
