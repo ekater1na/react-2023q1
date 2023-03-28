@@ -1,7 +1,7 @@
 import { describe, expect } from 'vitest';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import CardItem from '../../components/CardItem/CardItem';
+import { CardItem } from '../../components/CardItem/CardItem';
 
 describe('CardItem', () => {
   const mockItem = {

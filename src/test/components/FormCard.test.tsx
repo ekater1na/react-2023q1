@@ -1,7 +1,7 @@
 import { describe, expect } from 'vitest';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import FormCard from '../../components/FormCard/FormCard';
+import { FormCard } from '../../components/FormCard/FormCard';
 import { User } from '../../models/user';
 
 describe('FormCard', () => {
