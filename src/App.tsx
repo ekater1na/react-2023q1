@@ -2,10 +2,10 @@ import React from 'react';
 import './App.scss';
 import Header from './components/Header/Header';
 import { Route, Routes } from 'react-router-dom';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import MainPage from './pages/MainPage/MainPage';
-import AboutPage from './pages/AboutPage/AboutPage';
-import FormPage from './pages/FormPage/FormPage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
+import { MainPage } from './pages/MainPage/MainPage';
+import { AboutPage } from './pages/AboutPage/AboutPage';
+import { FormPage } from './pages/FormPage/FormPage';
 
 function App() {
   return (
