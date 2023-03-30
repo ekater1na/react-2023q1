@@ -33,4 +33,12 @@
       color: $black-color;
     }
   }
+
+  .active {
+    color: white;
+
+    &:before {
+      content: 'Location: ';
+    }
+  }
 }
