@@ -12,7 +12,7 @@ describe('FormCard', () => {
     birthDay: 'string',
     country: 'string',
     sex: 'string',
-    photo: 'string',
+    photo: {} as FileList,
     agreement: true,
   };
   it('should be shown', () => {
