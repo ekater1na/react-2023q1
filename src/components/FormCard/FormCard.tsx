@@ -9,10 +9,11 @@ interface FormCardProps {
 export const FormCard = ({ user }: FormCardProps) => {
   const { firstName, lastName, birthDay, country, sex, photo } = user;
 
+  const img = photo[0] ? URL.createObjectURL(photo[0]) : '';
   return (
     <div className="grid__item" data-testid="form-card">
       <div className="card">
-        <img className="card__img" src={photo as string} alt={lastName} />
+        <img className="card__img" src={img} alt={lastName} />
         <div className="card__content">
           <h1 className="card__header">
             {firstName} {lastName}

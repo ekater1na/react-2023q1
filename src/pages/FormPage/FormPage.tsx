@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './FormPage.scss';
 import { User } from '../../models/user';
 import { FormCard } from '../../components/FormCard/FormCard';
-import Form from '../../components/Form/Form';
+import { Form } from '../../components/Form/Form';
 
 type FormPageState = {
   formData: User[];
