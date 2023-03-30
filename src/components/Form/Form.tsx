@@ -21,8 +21,7 @@ export const Form = ({ setFormData }: FormProps) => {
 
   const onSubmit = (data: User) => {
     setFormData({ ...data, id: Math.random().toString() });
-    console.log(data);
-    reset();
+    setTimeout(reset, 500);
   };
 
   return (
