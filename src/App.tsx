@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import MainPage from './pages/MainPage/MainPage';
 import AboutPage from './pages/AboutPage/AboutPage';
+import FormPage from './pages/FormPage/FormPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route index element={<MainPage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="forms" element={<FormPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>

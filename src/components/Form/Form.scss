@@ -1,0 +1,57 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 1.5rem;
+  }
+
+  input {
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 8px 5px 8px 0;
+
+    &[type='date'] {
+      width: 100%;
+      margin: 8px 0;
+    }
+
+    &[type='file'] {
+      width: 100%;
+      margin: 8px 0;
+      background: linear-gradient(-45deg, #fa3, #fa3380);
+    }
+
+    &[type='radio'] {
+      width: 100%;
+      margin: 8px 4px;
+    }
+
+    &[type='checkbox'] {
+      margin: 8px 4px;
+    }
+  }
+
+  select {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    margin: 8px 0;
+  }
+
+  .field-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+
+    &:before {
+      content: '*';
+      padding-right: 5px;
+    }
+  }
+}

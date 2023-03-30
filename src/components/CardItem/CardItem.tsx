@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './CardItem.scss';
 import { Character } from '../../models/character';
 
-interface ComponentProps {
+interface CardItemProps {
   item: Character;
 }
 
-class CardItem extends Component<ComponentProps> {
+class CardItem extends Component<CardItemProps> {
   render() {
     const { image, name, species, status, gender, location } = this.props.item;
 

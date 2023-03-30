@@ -1,0 +1,25 @@
+@import '../../index.scss';
+
+.form-page-wrapper {
+  height: 100%;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+
+  .form-card-content {
+    display: grid;
+    width: 114rem;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    align-items: start;
+  }
+
+  @media (max-width: 60em) {
+    .grid {
+      grid-gap: 3rem;
+    }
+  }
+}
