@@ -12,7 +12,7 @@ describe('Form', () => {
     birthDay: 'string',
     country: 'string',
     sex: 'string',
-    photo: 'string',
+    photo: {} as FileList,
     agreement: true,
   };
 
