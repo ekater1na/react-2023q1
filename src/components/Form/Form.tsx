@@ -15,13 +15,9 @@ export const Form = ({ setFormData }: FormProps) => {
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm<User>();
+  } = useForm<User>({ mode: 'all' });
 
   const errorMessage = 'Please add data';
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //console.log(event);
-  };
 
   const onSubmit = (data: User) => {
     setFormData({ ...data, id: Math.random().toString() });
@@ -31,28 +27,13 @@ export const Form = ({ setFormData }: FormProps) => {
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)} data-testid="form">
-      <input
-        type="text"
-        {...register('firstName', { required: true })}
-        placeholder="First name"
-        onChange={handleChange}
-      />
+      <input type="text" {...register('firstName', { required: true })} placeholder="First name" />
       {errors.firstName?.type === 'required' && <p className="error-message">{errorMessage}</p>}
 
-      <input
-        type="text"
-        {...register('lastName', { required: true })}
-        placeholder="Last name"
-        onChange={handleChange}
-      />
+      <input type="text" {...register('lastName', { required: true })} placeholder="Last name" />
       {errors.lastName?.type === 'required' && <p className="error-message">{errorMessage}</p>}
 
-      <input
-        type="date"
-        {...register('birthDay', { required: true })}
-        placeholder="Birthday"
-        onChange={handleChange}
-      />
+      <input type="date" {...register('birthDay', { required: true })} placeholder="Birthday" />
       {errors.birthDay?.type === 'required' && <p className="error-message">{errorMessage}</p>}
 
       <select {...register('country', { required: true })} placeholder="Country">
@@ -70,7 +51,6 @@ export const Form = ({ setFormData }: FormProps) => {
             {...register('sex', { required: true })}
             placeholder="Sex"
             name="sex"
-            onChange={handleChange}
             value="male"
           />
           <label htmlFor="sex">Male</label>
@@ -83,7 +63,6 @@ export const Form = ({ setFormData }: FormProps) => {
             {...register('sex', { required: true })}
             placeholder="Sex"
             name="sex"
-            onChange={handleChange}
             value="female"
           />
           <label htmlFor="sex">Female</label>
@@ -91,12 +70,7 @@ export const Form = ({ setFormData }: FormProps) => {
       </div>
       {errors.sex?.type === 'required' && <p className="error-message">{errorMessage}</p>}
 
-      <input
-        type="file"
-        {...register('photo', { required: true })}
-        placeholder="Photo"
-        // onChange={handleChange}
-      />
+      <input type="file" {...register('photo', { required: true })} placeholder="Photo" />
       {errors.photo?.type === 'required' && <p className="error-message">{errorMessage}</p>}
 
       <div className="field-row">
@@ -105,7 +79,6 @@ export const Form = ({ setFormData }: FormProps) => {
           id="agreement"
           {...register('agreement', { required: true })}
           placeholder="agreement"
-          onChange={handleChange}
         />
         <label htmlFor="agreement">I consent to my personal data</label>
       </div>
