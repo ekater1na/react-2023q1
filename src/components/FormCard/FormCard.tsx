@@ -7,22 +7,19 @@ interface FormCardProps {
 }
 
 export const FormCard = ({ user }: FormCardProps) => {
-  const { firstName, lastName, birthDay, country, sex, photo } = user;
-
-  const img = photo[0] ? URL.createObjectURL(photo[0]) : '';
+  const { firstName, lastName, birthDay, country, sex, photoUrl } = user;
 
   return (
     <div className="form-card" data-testid="form-card">
-      <img src={img} alt={lastName} />
+      <img src={photoUrl} alt={lastName} />
       <div className="card-content">
         <h2>
           {firstName} {lastName}
         </h2>
         <h3>{birthDay}</h3>
         <p>
-          {sex === 'male' ? '👦' : '👧'} &rarr; {country}
+          {sex === 'male' ? '👦' : '👧'} | {country}
         </p>
-
         <a href="#" className="button">
           Find more
         </a>

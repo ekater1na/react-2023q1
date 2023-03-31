@@ -8,7 +8,6 @@
   color: white;
   box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
 
-
   img {
     position: absolute;
     object-fit: cover;
@@ -21,7 +20,6 @@
   }
 
   .card-content {
-
     h2 {
       background: linear-gradient(-45deg, #00dbde, #fc00ff);
       padding: 5px 10px;
@@ -72,7 +70,6 @@
       color: inherit;
       text-decoration: none;
     }
-
   }
 
   &:hover h2 {

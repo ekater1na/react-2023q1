@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import './MainPage.scss';
 import { CardItem } from '../../components/CardItem/CardItem';
 import characters from '../../consts/characters.json';
@@ -6,6 +6,10 @@ import { Character } from '../../models/character';
 
 export const MainPage = () => {
   const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('Search') || '');
+
+  useEffect(() => {
+    localStorage.setItem('Search', searchValue);
+  }, [searchValue]);
 
   const onFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
