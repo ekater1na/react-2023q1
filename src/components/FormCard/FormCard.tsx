@@ -18,13 +18,13 @@ export const FormCard = ({ user }: FormCardProps) => {
         <h2>
           {firstName} {lastName}
         </h2>
+        <h3>{birthDay}</h3>
         <p>
-          {birthDay} / {country} / {sex === 'male' ? '👦' : '👧'}
+          {sex === 'male' ? '👦' : '👧'} &rarr; {country}
         </p>
 
         <a href="#" className="button">
           Find more
-          <span>&rarr;</span>
         </a>
       </div>
     </div>
