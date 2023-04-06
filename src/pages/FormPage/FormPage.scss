@@ -11,10 +11,9 @@
 
   .form-card-content {
     display: grid;
-    width: 114rem;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    align-items: start;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
   }
 
   @media (max-width: 60em) {

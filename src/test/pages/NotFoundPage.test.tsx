@@ -1,7 +1,7 @@
 import { describe, expect } from 'vitest';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
+import { NotFoundPage } from '../../pages/NotFoundPage/NotFoundPage';
 
 describe('NotFoundPage', () => {
   it('should be shown', () => {

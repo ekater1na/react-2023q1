@@ -1,7 +1,7 @@
 import { describe, expect } from 'vitest';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import FormPage from '../../pages/FormPage/FormPage';
+import { FormPage } from '../../pages/FormPage/FormPage';
 
 describe('FormPage', () => {
   it('should be shown', () => {

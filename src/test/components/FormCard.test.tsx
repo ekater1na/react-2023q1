@@ -1,7 +1,7 @@
 import { describe, expect } from 'vitest';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import FormCard from '../../components/FormCard/FormCard';
+import { FormCard } from '../../components/FormCard/FormCard';
 import { User } from '../../models/user';
 
 describe('FormCard', () => {
@@ -12,7 +12,7 @@ describe('FormCard', () => {
     birthDay: 'string',
     country: 'string',
     sex: 'string',
-    photo: 'string',
+    photo: {} as FileList,
     agreement: true,
   };
   it('should be shown', () => {

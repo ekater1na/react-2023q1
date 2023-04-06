@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import MainPage from '../../pages/MainPage/MainPage';
+import { MainPage } from '../../pages/MainPage/MainPage';
 
 describe('MainPage ', () => {
   beforeEach(() => {

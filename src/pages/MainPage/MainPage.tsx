@@ -1,59 +1,55 @@
-import React, { ChangeEvent, Component, FormEvent } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import './MainPage.scss';
-import CardItem from '../../components/CardItem/CardItem';
+import { CardItem } from '../../components/CardItem/CardItem';
 import characters from '../../consts/characters.json';
 import { Character } from '../../models/character';
 
-class MainPage extends Component {
-  state = { searchValue: localStorage.getItem('Search' || '') };
+export const MainPage = () => {
+  const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('Search') || '');
 
-  componentWillUnmount() {
-    localStorage.setItem('Search', this.state.searchValue ? this.state.searchValue : '');
-  }
+  useEffect(() => {
+    localStorage.setItem('Search', searchValue);
+  }, [searchValue]);
 
-  onFormChange(e: ChangeEvent<HTMLInputElement>) {
-    this.setState({ searchValue: e.target.value });
-  }
+  const onFormChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
 
-  onFormSubmit(e: FormEvent) {
+  const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-  }
+  };
 
-  render() {
-    return (
-      <div className="main-page-wrapper" data-testid="main-page">
-        <section className="section-plans" id="section-plans">
-          <div className="u-center-text u-margin-bottom-big">
-            <h2 className="heading-secondary">Characters</h2>
-            <form role="form" onSubmit={(e: FormEvent<HTMLFormElement>) => this.onFormSubmit(e)}>
-              <div className="input-wrapper">
-                <input
-                  type="text"
-                  name="name"
-                  onChange={(e) => this.onFormChange(e)}
-                  value={this.state.searchValue || ''}
-                />
-                <button className="btn btn--white" type="submit">
-                  Search
-                </button>
-              </div>
-            </form>
-          </div>
+  return (
+    <div className="main-page-wrapper" data-testid="main-page">
+      <section className="section-plans" id="section-plans">
+        <div className="u-center-text u-margin-bottom-big">
+          <h2 className="heading-secondary">Characters</h2>
+          <form role="form" onSubmit={(e: FormEvent<HTMLFormElement>) => onFormSubmit(e)}>
+            <div className="input-wrapper">
+              <input
+                type="text"
+                name="name"
+                onChange={(e) => onFormChange(e)}
+                value={searchValue}
+              />
+              <button className="btn btn--white" type="submit">
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
 
-          <div className="row">
-            {characters &&
-              characters.map((value: Character) => <CardItem key={value.id} item={value} />)}
-          </div>
+        <div className="row">
+          {characters &&
+            characters.map((value: Character) => <CardItem key={value.id} item={value} />)}
+        </div>
 
-          <div className="u-center-text u-margin-top-huge">
-            <a href="#" className="btn btn--green">
-              Get Started
-            </a>
-          </div>
-        </section>
-      </div>
-    );
-  }
-}
-
-export default MainPage;
+        <div className="u-center-text u-margin-top-huge">
+          <a href="#" className="btn btn--green">
+            Get Started
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+};
