@@ -5,6 +5,7 @@ import { Character } from '../../models/character';
 import axios from 'axios';
 import { Loader } from '../../components/Loader/Loader';
 import Pagination from '../../components/Pagination/Pagination';
+import { OptionsBar } from "../../components/OptionsBar/OptionsBar";
 
 export const MainPage = () => {
   const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('Search') || '');
@@ -65,6 +66,7 @@ export const MainPage = () => {
             </div>
           </form>
         </div>
+        <OptionsBar />
 
         <div className="row">
           {isLoading && <Loader />}
