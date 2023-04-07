@@ -5,11 +5,11 @@
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  height: 42rem;
+  height: 20rem;
 }
 
 .card__side {
-  height: 40rem;
+  height: 18rem;
   -webkit-transition: all 0.8s ease;
   transition: all 0.8s ease;
   position: absolute;
@@ -178,6 +178,6 @@
   }
 
   & .col-1-of-3 {
-    width: calc((100% - 2 * 6rem) / 3);
+    width: calc((100% - 2 * 3rem) / 5);
   }
 }
