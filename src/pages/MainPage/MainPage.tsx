@@ -1,11 +1,11 @@
-import React, { ChangeEvent, FormEvent, useEffect, useMemo, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import './MainPage.scss';
 import { CardItem } from '../../components/CardItem/CardItem';
 import { Character } from '../../models/character';
 import axios from 'axios';
 import { Loader } from '../../components/Loader/Loader';
 import Pagination from '../../components/Pagination/Pagination';
-import { OptionsBar } from "../../components/OptionsBar/OptionsBar";
+import { OptionsBar } from '../../components/OptionsBar/OptionsBar';
 
 export const MainPage = () => {
   const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('Search') || '');

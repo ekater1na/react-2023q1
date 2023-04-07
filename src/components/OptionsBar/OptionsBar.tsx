@@ -7,7 +7,7 @@ export const OptionsBar = () => {
   const [totalCount, setTotalCount] = useState<number>(0);
 
   return (
-    <div className="options-bar-container" data-testid='options-bar'>
+    <div className="options-bar-container" data-testid="options-bar">
       <label>
         Result per page:
         <input type="text" name="name" />
