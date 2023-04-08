@@ -1,42 +1,30 @@
 import React from 'react';
 import './CardItem.scss';
-import { Character } from '../../models/character';
+import { Card } from '../../models/unsplash';
 
 interface CardItemProps {
-  item: Character;
+  item: Card;
 }
 
 export const CardItem = ({ item }: CardItemProps) => {
-  const { image, name, species, status, gender, location } = item;
+  const { urls, created_at, description, alt_description, likes, user } = item;
 
+  const date = created_at.slice(0, 10);
   return (
-    <div className="col-1-of-3" data-testid="card">
-      <div className="card">
-        <div className="card__side card__side--front-3">
-          {/*<div className="card__title">*/}
-          {/*  <img className="card__image" src={image} alt={name}></img>*/}
-          {/*</div>*/}
-          <h4 className="card__heading truncate">{name}</h4>
-
-          {/*<div className="card__details">*/}
-          {/*  <ul>*/}
-          {/*    <li>{species}</li>*/}
-          {/*    <li>{status}</li>*/}
-          {/*    <li>{gender}</li>*/}
-          {/*    <li>{location.name}</li>*/}
-          {/*  </ul>*/}
-          {/*</div>*/}
+    <div className="card" data-testid="card">
+      <div className="card__side">
+        <div className="card__title">
+          <img className="card__image" src={urls.small} alt={alt_description}></img>
         </div>
-        <div className="card__side card__side--back card__side--back-3">
-          <div className="card__cta">
-            <div className="card__price-box">
-              <p className="card__price-only">Location:</p>
-              <p className="card__price-value">{name}</p>
-            </div>
-            <a href="/about" className="btn btn--white">
-              Visit
-            </a>
-          </div>
+        <h4 className="card__heading truncate">{description || 'no title'}</h4>
+
+        <div className="card__details truncate">
+          <ul>
+            <li className="truncate">👍{likes}</li>
+            <li className="truncate">📅{date}</li>
+            <li className="truncate">👤{user.instagram_username || 'no username'}</li>
+            <li className="truncate">🌍{user.location || 'unknown location'}</li>
+          </ul>
         </div>
       </div>
     </div>

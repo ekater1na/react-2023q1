@@ -11,24 +11,11 @@ export const MainPage = () => {
   const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('Search') || '');
 
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('Search', searchValue);
   }, [searchValue]);
-
-  useEffect(() => {
-    const getItems = async () => {
-      const result = await axios(
-        `https://www.anapioficeandfire.com/api/houses` //Endpoint and parameter or base Url
-      );
-      console.log(result.data);
-
-      setCharacters(result.data); //sets the data to appear
-      setLoading(false); //stop loading when data is fetched
-    };
-    getItems();
-  }, []);
 
   const onFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -36,6 +23,20 @@ export const MainPage = () => {
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    const getItems = async () => {
+      const result = await axios.get(
+        `https://api.unsplash.com/search/photos?page=1&query=${searchValue}`, //Endpoint and parameter or base Url
+        {
+          headers: { Authorization: 'Client-ID Yme6ZcumIXpWryQ0DPc249CE0ua2Mxh66Y-4W2gPAAc' },
+        }
+      );
+      console.log(result.data);
+
+      setCharacters(result.data.results); //sets the data to appear
+      setLoading(false); //stop loading when data is fetched
+    };
+    getItems();
   };
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,9 +50,8 @@ export const MainPage = () => {
 
   return (
     <div className="main-page-wrapper" data-testid="main-page">
-      <section className="section-plans" id="section-plans">
-        <div className="u-center-text u-margin-bottom-big">
-          <h2 className="heading-secondary">Characters</h2>
+      <section>
+        <div className="u-center-text">
           <form role="form" onSubmit={(e: FormEvent<HTMLFormElement>) => onFormSubmit(e)}>
             <div className="input-wrapper">
               <input
@@ -68,11 +68,14 @@ export const MainPage = () => {
         </div>
         <OptionsBar />
 
-        <div className="row">
+        <div className="cards">
           {isLoading && <Loader />}
 
+          {!characters && !isLoading && <p>No data</p>}
+
           {characters &&
-            characters.map((value: Character) => <CardItem key={value.name} item={value} />)}
+            characters.map((value: Character) => <CardItem key={value.id} item={value} />)}
+
         </div>
 
         <div className="u-center-text u-margin-top-huge">
