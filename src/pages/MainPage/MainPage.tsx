@@ -23,6 +23,7 @@ export const MainPage = () => {
 
   const onFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
+    setCurrentPage(1);
   };
 
   const onFormSubmit = (e: FormEvent) => {
