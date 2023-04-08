@@ -44,11 +44,9 @@ export const MainPage = () => {
     getItems();
   };
 
-  // const currentTableData = useMemo(() => {
-  //   const firstPageIndex = (currentPage - 1) * PageSize;
-  //   const lastPageIndex = firstPageIndex + PageSize;
-  //   return data.slice(firstPageIndex, lastPageIndex);
-  // }, [currentPage]);
+  const setPage = (currentPage: number) => {
+    setCurrentPage(currentPage);
+  };
 
   return (
     <div className="main-page-wrapper" data-testid="main-page">
@@ -74,11 +72,12 @@ export const MainPage = () => {
           totalCount={totalCount}
         />
 
-        <div className="cards">
+        <div className="message-wrapper">
           {isLoading && <Loader />}
+          {!characters.length && !isLoading && <p>No data founded</p>}
+        </div>
 
-          {!characters && !isLoading && <p>No data</p>}
-
+        <div className="cards">
           {characters && characters.map((value: Card) => <CardItem key={value.id} item={value} />)}
         </div>
 
@@ -87,7 +86,7 @@ export const MainPage = () => {
             currentPage={currentPage}
             totalCount={totalCount}
             pageSize={resultPerPage}
-            onPageChange={(page) => setCurrentPage(page)}
+            onPageChange={(currentPage) => setPage(currentPage)}
           />
         </div>
       </section>
