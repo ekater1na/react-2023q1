@@ -1,4 +1,4 @@
-export interface Response {
+export interface ResponseData {
   total: number;
   total_pages: number;
   results: Card[];

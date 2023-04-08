@@ -1,5 +1,7 @@
+@import '../../index.scss';
+
 .main-page-wrapper {
-  //height: 100%;
+  height: calc(100hv - $header-height - $options-bar-height);
   display: flex;
   flex-direction: column;
   justify-content: center;

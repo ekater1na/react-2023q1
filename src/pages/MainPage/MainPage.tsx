@@ -1,16 +1,20 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import './MainPage.scss';
 import { CardItem } from '../../components/CardItem/CardItem';
-import { Character } from '../../models/character';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { Loader } from '../../components/Loader/Loader';
 import Pagination from '../../components/Pagination/Pagination';
 import { OptionsBar } from '../../components/OptionsBar/OptionsBar';
+import { Card, ResponseData } from '../../models/unsplash';
 
 export const MainPage = () => {
   const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('Search') || '');
+  const [sortOrder, setSortOrder] = useState<string>('popular');
+  const [resultPerPage, setResultPerPage] = useState<number>(10);
+  const [totalCount, setTotalCount] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const [characters, setCharacters] = useState<Character[]>([]);
+  const [characters, setCharacters] = useState<Card[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -25,22 +29,20 @@ export const MainPage = () => {
     e.preventDefault();
     setLoading(true);
     const getItems = async () => {
-      const result = await axios.get(
-        `https://api.unsplash.com/search/photos?page=1&query=${searchValue}`, //Endpoint and parameter or base Url
+      const result: AxiosResponse<ResponseData, Card> = await axios.get(
+        `https://api.unsplash.com/search/photos?page=${currentPage}&per_page=${resultPerPage}&order_by=${sortOrder}&query=${searchValue}`, //Endpoint and parameter or base Url
         {
-          headers: { Authorization: 'Client-ID Yme6ZcumIXpWryQ0DPc249CE0ua2Mxh66Y-4W2gPAAc' },
+          headers: { Authorization: `Client-ID KlL90ddOBBRCiQaPmFVZnF2g_JGrIlhsYWgtgFhMAk0` },
         }
       );
       console.log(result.data);
 
       setCharacters(result.data.results); //sets the data to appear
+      setTotalCount(result.data.total);
       setLoading(false); //stop loading when data is fetched
     };
     getItems();
   };
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const PageSize = 10;
 
   // const currentTableData = useMemo(() => {
   //   const firstPageIndex = (currentPage - 1) * PageSize;
@@ -66,26 +68,25 @@ export const MainPage = () => {
             </div>
           </form>
         </div>
-        <OptionsBar />
+        <OptionsBar
+          setSortOrder={setSortOrder}
+          setResultPerPage={setResultPerPage}
+          totalCount={totalCount}
+        />
 
         <div className="cards">
           {isLoading && <Loader />}
 
           {!characters && !isLoading && <p>No data</p>}
 
-          {characters &&
-            characters.map((value: Character) => <CardItem key={value.id} item={value} />)}
-
+          {characters && characters.map((value: Card) => <CardItem key={value.id} item={value} />)}
         </div>
 
         <div className="u-center-text u-margin-top-huge">
-          {/*<a href="#" className="btn btn--green">*/}
-          {/*  Get Started*/}
-          {/*</a>*/}
           <Pagination
             currentPage={currentPage}
-            totalCount={20}
-            pageSize={PageSize}
+            totalCount={totalCount}
+            pageSize={resultPerPage}
             onPageChange={(page) => setCurrentPage(page)}
           />
         </div>
