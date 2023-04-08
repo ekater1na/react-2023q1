@@ -13,6 +13,16 @@
     margin: 8px 5px 8px 0;
   }
 
+  .message-wrapper {
+    //height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #9a4eff;
+    font-size: 2rem;
+  }
+
   .cards {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
