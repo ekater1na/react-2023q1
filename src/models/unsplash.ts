@@ -1,10 +1,10 @@
 export interface Response {
   total: number;
   total_pages: number;
-  results: Result[];
+  results: Card[];
 }
 
-export interface Result {
+export interface Card {
   id: string;
   created_at: string;
   updated_at: string;
