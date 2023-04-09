@@ -9,7 +9,7 @@ interface PaginationProps {
   currentPage: number;
   pageSize: number;
 }
-const Pagination = (props: PaginationProps) => {
+export const Pagination = (props: PaginationProps) => {
   const { onPageChange, totalCount, currentPage, pageSize } = props;
 
   const paginationRange = usePagination({
@@ -63,5 +63,3 @@ const Pagination = (props: PaginationProps) => {
     </ul>
   );
 };
-
-export default Pagination;

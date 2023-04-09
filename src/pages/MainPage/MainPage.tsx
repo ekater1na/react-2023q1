@@ -3,7 +3,7 @@ import './MainPage.scss';
 import { CardItem } from '../../components/CardItem/CardItem';
 import axios, { AxiosResponse } from 'axios';
 import { Loader } from '../../components/Loader/Loader';
-import Pagination from '../../components/Pagination/Pagination';
+import { Pagination } from '../../components/Pagination/Pagination';
 import { OptionsBar } from '../../components/OptionsBar/OptionsBar';
 import { Card, ResponseData } from '../../models/unsplash';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
