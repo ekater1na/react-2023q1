@@ -22,8 +22,14 @@ export const SearchBar = (props: SearchBarProps) => {
     <div className="u-center-text search-bar-wrapper" data-testid="search-bar">
       <form role="form" onSubmit={(e: FormEvent<HTMLFormElement>) => onFormSubmit(e)}>
         <div className="input-wrapper">
-          <input type="text" name="name" onChange={(e) => onFormChange(e)} value={searchValue} />
-          <button className="btn" type="submit">
+          <input
+            className="search-bar-input"
+            type="text"
+            name="name"
+            onChange={(e) => onFormChange(e)}
+            value={searchValue}
+          />
+          <button className="search-bar-button" type="submit">
             Search
           </button>
         </div>
