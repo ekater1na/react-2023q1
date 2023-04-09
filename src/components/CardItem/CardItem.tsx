@@ -9,7 +9,7 @@ interface CardItemProps {
 }
 
 export const CardItem = ({ item }: CardItemProps) => {
-  const { toggle, visible } = useModal();
+  const { closeModal, openModal, visible } = useModal();
 
   const { urls, created_at, description, alt_description, likes, user } = item;
 
@@ -17,7 +17,7 @@ export const CardItem = ({ item }: CardItemProps) => {
 
   return (
     <>
-      <div className="card" data-testid="card" onClick={toggle}>
+      <div className="card" data-testid="card" onClick={openModal}>
         <div className="card__side">
           <div className="card__title">
             <img className="card__image" src={urls.small} alt={alt_description}></img>
@@ -35,7 +35,7 @@ export const CardItem = ({ item }: CardItemProps) => {
           </div>
         </div>
       </div>
-      <Modal visible={visible} toggle={toggle} item={item} />
+      <Modal visible={visible} closeModal={closeModal} item={item} />
     </>
   );
 };
