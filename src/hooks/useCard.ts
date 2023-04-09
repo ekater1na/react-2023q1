@@ -23,7 +23,7 @@ export const useCards = (value: string) => {
             headers: { Authorization: 'Client-ID Yme6ZcumIXpWryQ0DPc249CE0ua2Mxh66Y-4W2gPAAc' },
             params: {
               page: currentPage,
-              per_page: resultPerPage,
+              per_page: isNaN(resultPerPage) ? 10 : resultPerPage,
               order_by: sortOrder,
               query: value,
             },
