@@ -9,5 +9,7 @@ describe('Modal', () => {
   it('should be shown', () => {
     render(<Modal toggle={() => {}} visible={true} item={mockCard} />);
     expect(screen.getByTestId('modal')).toBeDefined();
+    expect(screen.getByRole('img')).toBeDefined();
+    expect(screen.getByRole('button')).toBeTruthy();
   });
 });
