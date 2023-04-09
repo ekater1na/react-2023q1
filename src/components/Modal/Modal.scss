@@ -10,6 +10,9 @@
   top: 10%;
   left: 35%;
   font-size: 1.5rem;
+  max-height: 90vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
