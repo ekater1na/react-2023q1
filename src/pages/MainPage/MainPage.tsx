@@ -33,11 +33,11 @@ export const MainPage = () => {
       );
 
       setCharacters(result.data.results);
-      setTotalCount(result.data.total);
+      setTotalCount(result.data.total_pages);
       setLoading(false);
     };
     getItems();
-  }, [searchValue, currentPage, resultPerPage, sortOrder]);
+  }, [searchValue, currentPage, resultPerPage, sortOrder, totalCount]);
 
   const setPage = (currentPage: number) => {
     setCurrentPage(currentPage);
