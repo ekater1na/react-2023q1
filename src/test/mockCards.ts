@@ -52,7 +52,6 @@ export const MockResponse: ResponseData = {
         name: 'Alesia Kazantceva',
         first_name: 'Alesia',
         last_name: 'Kazantceva',
-        twitter_username: null,
         portfolio_url: 'http://saltnstreets.com',
         bio: 'Ottawa-based photographer who loves adventures.\r\n Gear: Canon 6D 85mm, 35 mm;            Leica Q2',
         location: 'Ottawa',
@@ -82,8 +81,6 @@ export const MockResponse: ResponseData = {
         social: {
           instagram_username: 'saltnstreets',
           portfolio_url: 'http://saltnstreets.com',
-          twitter_username: null,
-          paypal_email: null,
         },
       },
       tags: [
@@ -194,7 +191,6 @@ export const MockResponse: ResponseData = {
                   instagram_username: 'kunack.us',
                   portfolio_url: 'https://kunack.us/follow?source=unsplash',
                   twitter_username: 'nathanworking',
-                  paypal_email: null,
                 },
               },
             },
@@ -234,7 +230,6 @@ export const MockResponse: ResponseData = {
               height: 5304,
               color: '#c0c0c0',
               blur_hash: 'LhF$CS?bRjRj~p%LV@WCSiWWWBof',
-              description: null,
               alt_description: 'woman taking photo of buildings',
               urls: {
                 raw: 'https://images.unsplash.com/photo-1479502806991-251c94be6b15?ixlib=rb-4.0.3',
@@ -306,7 +301,6 @@ export const MockResponse: ResponseData = {
                   portfolio_url:
                     'http://thoughtcatalog.com/?utm_campaign=platform-link&utm_source=unsplash&utm_medium=profile',
                   twitter_username: 'thoughtcatalog',
-                  paypal_email: null,
                 },
               },
             },
@@ -362,7 +356,6 @@ export const MockResponse: ResponseData = {
         name: 'Redd F',
         first_name: 'Redd',
         last_name: 'F',
-        twitter_username: null,
         portfolio_url: 'https://www.raddfilms.com/',
         bio: 'Photographer & Filmmaker\r\n',
         location: 'Edmonton, Alberta',
@@ -392,8 +385,6 @@ export const MockResponse: ResponseData = {
         social: {
           instagram_username: 'radd.films',
           portfolio_url: 'https://www.raddfilms.com/',
-          twitter_username: null,
-          paypal_email: null,
         },
       },
       tags: [
@@ -475,7 +466,7 @@ export const MockResponse: ResponseData = {
                 first_name: 'Dakota',
                 last_name: 'Corbin',
                 twitter_username: 'thedakotacorbin',
-                portfolio_url: null,
+
                 bio: 'Husband | Father | Creator',
                 location: 'Utah, United States',
                 links: {
@@ -503,9 +494,8 @@ export const MockResponse: ResponseData = {
                 for_hire: true,
                 social: {
                   instagram_username: 'thedakotacorbin',
-                  portfolio_url: null,
+
                   twitter_username: 'thedakotacorbin',
-                  paypal_email: null,
                 },
               },
             },
@@ -569,7 +559,6 @@ export const MockResponse: ResponseData = {
         name: 'Samantha Gades',
         first_name: 'Samantha',
         last_name: 'Gades',
-        twitter_username: null,
         portfolio_url: 'https://www.gadesphotography.co',
         bio: '-- MPLS Wedding Photographer -- ',
         location: 'Minneapolis, Mn',
@@ -599,8 +588,6 @@ export const MockResponse: ResponseData = {
         social: {
           instagram_username: 'samanthagades',
           portfolio_url: 'https://www.gadesphotography.co',
-          twitter_username: null,
-          paypal_email: null,
         },
       },
       tags: [
@@ -639,7 +626,6 @@ export const MockResponse: ResponseData = {
               color: '#8c8c8c',
               blur_hash: 'LGD9I?9ZM{xt?wIUM_ofXnxCs.j[',
               description: "Michael Angelo's painting on top of the Palace of Versailles",
-              alt_description: null,
               urls: {
                 raw: 'https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?ixlib=rb-4.0.3',
                 full: 'https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb',
@@ -676,7 +662,6 @@ export const MockResponse: ResponseData = {
                 name: 'adrianna geo',
                 first_name: 'adrianna',
                 last_name: 'geo',
-                twitter_username: null,
                 portfolio_url: 'https://instagram.com/adriannajohannaphoto',
                 bio: 'Lifestyle photographer\r\nYouth photographer for @rgtyouth on instagram ',
                 location: 'Bay Area',
@@ -706,8 +691,6 @@ export const MockResponse: ResponseData = {
                 social: {
                   instagram_username: 'ajdphotography__',
                   portfolio_url: 'https://instagram.com/adriannajohannaphoto',
-                  twitter_username: null,
-                  paypal_email: null,
                 },
               },
             },
@@ -728,7 +711,6 @@ export const MockResponse: ResponseData = {
       height: 7360,
       color: '#c0c0c0',
       blur_hash: 'LKHxc]bvn#R*Z}s,M{t7~pV@M{t7',
-      description: null,
       alt_description: 'black and brown chairs and tables',
       urls: {
         raw: 'https://images.unsplash.com/photo-1579487785973-74d2ca7abdd5?ixid=MnwxODA3NzN8MHwxfHNlYXJjaHw0fHxvZmZpY2V8ZW58MHx8fHwxNjgwOTg1MDYw&ixlib=rb-4.0.3',
@@ -767,8 +749,6 @@ export const MockResponse: ResponseData = {
         name: 'Jose Losada',
         first_name: 'Jose',
         last_name: 'Losada',
-        twitter_username: null,
-        portfolio_url: null,
         bio: 'Graphic Designer + Producer + Singer + Photographer.\r\nYou can contact me at joselosada88@icloud.com. Houston based!  https://www.patreon.com/joselosada',
         location: 'Houston, TX',
         links: {
@@ -796,9 +776,6 @@ export const MockResponse: ResponseData = {
         for_hire: true,
         social: {
           instagram_username: 'joselosadaphotography',
-          portfolio_url: null,
-          twitter_username: null,
-          paypal_email: null,
         },
       },
       tags: [
@@ -917,7 +894,6 @@ export const MockResponse: ResponseData = {
                   instagram_username: 'teemujp',
                   portfolio_url: 'http://instagram.com/teemujp',
                   twitter_username: 'spacekablooie',
-                  paypal_email: null,
                 },
               },
             },
@@ -934,7 +910,6 @@ export const MockResponse: ResponseData = {
       height: 4806,
       color: '#262626',
       blur_hash: 'LPEyoM9Ft8R%_NRit7kCNsM{ozt7',
-      description: null,
       alt_description: 'MacBook Pro',
       urls: {
         raw: 'https://images.unsplash.com/photo-1535957998253-26ae1ef29506?ixid=MnwxODA3NzN8MHwxfHNlYXJjaHw1fHxvZmZpY2V8ZW58MHx8fHwxNjgwOTg1MDYw&ixlib=rb-4.0.3',
@@ -973,7 +948,6 @@ export const MockResponse: ResponseData = {
         name: 'Olena Sergienko',
         first_name: 'Olena',
         last_name: 'Sergienko',
-        twitter_username: null,
         portfolio_url: 'https://www.behance.net/olenkasergienko',
         bio: '🇺🇦 From Kyiv with love 📸🖖\r\n🇵🇱 Currently in Warsaw DM me for brand content | thanks for the PayPal donation',
         location: 'Warszawa',
@@ -1003,8 +977,6 @@ export const MockResponse: ResponseData = {
         social: {
           instagram_username: 'olenka_sergienko',
           portfolio_url: 'https://www.behance.net/olenkasergienko',
-          twitter_username: null,
-          paypal_email: null,
         },
       },
       tags: [
@@ -1031,7 +1003,6 @@ export const MockResponse: ResponseData = {
       height: 1536,
       color: '#8c7373',
       blur_hash: 'LAD]h@0KyERjE,o}a}of~B-=Rit7',
-      description: null,
       alt_description: 'architectural photography of black and brown hallway',
       urls: {
         raw: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixid=MnwxODA3NzN8MHwxfHNlYXJjaHw2fHxvZmZpY2V8ZW58MHx8fHwxNjgwOTg1MDYw&ixlib=rb-4.0.3',
@@ -1074,9 +1045,7 @@ export const MockResponse: ResponseData = {
         name: 'Nastuh Abootalebi',
         first_name: 'Nastuh',
         last_name: 'Abootalebi',
-        twitter_username: null,
         portfolio_url: 'http://sunday.digital',
-        bio: null,
         location: 'Munich',
         links: {
           self: 'https://api.unsplash.com/users/sunday_digital',
@@ -1104,8 +1073,6 @@ export const MockResponse: ResponseData = {
         social: {
           instagram_username: 'prsn.kitty',
           portfolio_url: 'http://sunday.digital',
-          twitter_username: null,
-          paypal_email: null,
         },
       },
       tags: [
@@ -1132,7 +1099,6 @@ export const MockResponse: ResponseData = {
       height: 2000,
       color: '#c0a6a6',
       blur_hash: 'LOKKpAI[9u.9yZtn-oi^]}S4NGNH',
-      description: null,
       alt_description: 'brown wooden table with chairs',
       urls: {
         raw: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?ixid=MnwxODA3NzN8MHwxfHNlYXJjaHw3fHxvZmZpY2V8ZW58MHx8fHwxNjgwOTg1MDYw&ixlib=rb-4.0.3',
@@ -1165,11 +1131,8 @@ export const MockResponse: ResponseData = {
         username: 'copernicowork',
         name: 'Copernico',
         first_name: 'Copernico',
-        last_name: null,
-        twitter_username: null,
         portfolio_url: 'https://www.coperni.co/',
         bio: 'Copernico. The workplace for your business to thrive!',
-        location: null,
         links: {
           self: 'https://api.unsplash.com/users/copernicowork',
           html: 'https://unsplash.com/@copernicowork',
@@ -1196,8 +1159,6 @@ export const MockResponse: ResponseData = {
         social: {
           instagram_username: 'copernicowork',
           portfolio_url: 'https://www.coperni.co/',
-          twitter_username: null,
-          paypal_email: null,
         },
       },
       tags: [
@@ -1284,7 +1245,6 @@ export const MockResponse: ResponseData = {
                 name: 'Scott Webb',
                 first_name: 'Scott',
                 last_name: 'Webb',
-                twitter_username: null,
                 portfolio_url: 'https://scottwebb.me/',
                 bio: "If you like my work and you'd like to support me, you can consider a donation 👉  http://www.paypal.me/scottrwebb | Donation goal for a new lens: $351.01 of $449 | Thank you Jay D. 🙏",
                 location: 'London, Ontario, Canada',
@@ -1314,8 +1274,6 @@ export const MockResponse: ResponseData = {
                 social: {
                   instagram_username: 'scottwebb',
                   portfolio_url: 'https://scottwebb.me/',
-                  twitter_username: null,
-                  paypal_email: null,
                 },
               },
             },
@@ -1332,7 +1290,6 @@ export const MockResponse: ResponseData = {
       height: 3895,
       color: '#d9c0c0',
       blur_hash: 'LXIO92-;9ZW;~VxaM{RjMxj?t6t6',
-      description: null,
       alt_description: 'people sitting on chair in front of computer',
       urls: {
         raw: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixid=MnwxODA3NzN8MHwxfHNlYXJjaHw4fHxvZmZpY2V8ZW58MHx8fHwxNjgwOTg1MDYw&ixlib=rb-4.0.3',
@@ -1371,10 +1328,7 @@ export const MockResponse: ResponseData = {
         name: 'Israel Andrade',
         first_name: 'Israel',
         last_name: 'Andrade',
-        twitter_username: null,
-        portfolio_url: null,
-        bio: null,
-        location: null,
+
         links: {
           self: 'https://api.unsplash.com/users/israelandrxde',
           html: 'https://unsplash.com/@israelandrxde',
@@ -1392,18 +1346,12 @@ export const MockResponse: ResponseData = {
           large:
             'https://images.unsplash.com/profile-fb-1522079523-fa0c89da8143.jpg?ixlib=rb-4.0.3&crop=faces&fit=crop&w=128&h=128',
         },
-        instagram_username: null,
         total_collections: 0,
         total_likes: 0,
         total_photos: 5,
         accepted_tos: true,
         for_hire: false,
-        social: {
-          instagram_username: null,
-          portfolio_url: null,
-          twitter_username: null,
-          paypal_email: null,
-        },
+        social: {},
       },
       tags: [
         {
@@ -1476,9 +1424,7 @@ export const MockResponse: ResponseData = {
         name: 'Nastuh Abootalebi',
         first_name: 'Nastuh',
         last_name: 'Abootalebi',
-        twitter_username: null,
         portfolio_url: 'http://sunday.digital',
-        bio: null,
         location: 'Munich',
         links: {
           self: 'https://api.unsplash.com/users/sunday_digital',
@@ -1506,8 +1452,6 @@ export const MockResponse: ResponseData = {
         social: {
           instagram_username: 'prsn.kitty',
           portfolio_url: 'http://sunday.digital',
-          twitter_username: null,
-          paypal_email: null,
         },
       },
       tags: [
@@ -1577,7 +1521,6 @@ export const MockResponse: ResponseData = {
         name: 'Christin Hume',
         first_name: 'Christin',
         last_name: 'Hume',
-        twitter_username: null,
         portfolio_url: 'http://christinhumephoto.com',
         bio: 'Christin Hume Photography is a platform used to love, serve, know, and tell the stories of others.',
         location: 'Austin, Texas',
@@ -1607,8 +1550,6 @@ export const MockResponse: ResponseData = {
         social: {
           instagram_username: 'christinhumephoto',
           portfolio_url: 'http://christinhumephoto.com',
-          twitter_username: null,
-          paypal_email: null,
         },
       },
       tags: [

@@ -8,13 +8,13 @@ export interface Card {
   id: string;
   created_at: string;
   updated_at: string;
-  promoted_at?: string;
+  promoted_at?: string | null;
   width: number;
   height: number;
   color: string;
   blur_hash: string;
   description?: string;
-  alt_description: string;
+  alt_description?: string;
   urls: Urls;
   links: Links;
   likes: number;
@@ -82,7 +82,7 @@ export interface User {
   name: string;
   first_name: string;
   last_name?: string;
-  twitter_username: string;
+  twitter_username?: string;
   portfolio_url?: string;
   bio?: string;
   location?: string;
@@ -116,8 +116,8 @@ export interface ProfileImage {
 export interface Social {
   instagram_username?: string;
   portfolio_url?: string;
-  twitter_username: string;
-  paypal_email: string;
+  twitter_username?: string;
+  paypal_email?: string;
 }
 
 export interface Tag {
@@ -161,7 +161,7 @@ export interface CoverPhoto {
   id: string;
   created_at: string;
   updated_at: string;
-  promoted_at?: string;
+  promoted_at?: string | null;
   width: number;
   height: number;
   color: string;
@@ -241,11 +241,11 @@ export interface User2 {
   username: string;
   name: string;
   first_name: string;
-  last_name: string;
+  last_name?: string;
   twitter_username?: string;
   portfolio_url?: string;
-  bio: string;
-  location: string;
+  bio?: string;
+  location?: string;
   links: Links4;
   profile_image: ProfileImage2;
   instagram_username: string;
@@ -277,5 +277,5 @@ export interface Social2 {
   instagram_username: string;
   portfolio_url?: string;
   twitter_username?: string;
-  paypal_email: string;
+  paypal_email?: string;
 }
