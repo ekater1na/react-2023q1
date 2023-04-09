@@ -45,21 +45,22 @@ export const MainPage = () => {
           setResultPerPage={setResultPerPage}
           totalCount={totalCount}
         />
+        {error && <Error error={error} />}
 
         <div className="message-wrapper">
           {isLoading && <Loader />}
-          {error && <Error error={error} />}
           {!cards.length && !isLoading && <p>No data founded</p>}
         </div>
 
         <div className="cards">
           {!isLoading &&
+            !error &&
             cards &&
             cards.map((value: Card) => <CardItem key={value.id} item={value} />)}
         </div>
 
         <div className="u-center-text u-margin-top-huge">
-          {!isLoading && cards && (
+          {!isLoading && !error && cards && (
             <Pagination
               currentPage={currentPage}
               totalCount={totalCount}
