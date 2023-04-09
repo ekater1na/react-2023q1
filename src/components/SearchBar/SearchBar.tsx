@@ -3,11 +3,12 @@ import './SearchBar.scss';
 interface SearchBarProps {
   searchValue: string;
   setSearchValue: (searchValue: string) => void;
-  setCurrentPage: (currentPage: number) => void;
+  setCurrentPage?: (currentPage: number) => void;
+  fetchData: (searchValue: string) => void;
 }
 
 export const SearchBar = (props: SearchBarProps) => {
-  const { searchValue, setSearchValue, setCurrentPage } = props;
+  const { searchValue, setSearchValue, fetchData } = props;
 
   const onFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -15,8 +16,7 @@ export const SearchBar = (props: SearchBarProps) => {
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setSearchValue(searchValue);
-    setCurrentPage(1);
+    fetchData(searchValue);
   };
 
   return (
