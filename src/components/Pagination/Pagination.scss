@@ -23,7 +23,8 @@
       cursor: default;
     }
     &:hover {
-      background-color: rgb(81, 176, 217);
+      background-color: rgb(224, 230, 243);
+      color: black;
       cursor: pointer;
     }
 
@@ -38,8 +39,8 @@
         display: inline-block;
         width: 0.4em;
         height: 0.4em;
-        border-right: 0.12em solid rgba(0, 0, 0, 0.87);
-        border-top: 0.12em solid rgba(0, 0, 0, 0.87);
+        border-right: 0.12em solid rgb(119, 139, 225);
+        border-top: 0.12em solid rgb(119, 139, 225);
       }
 
       &.left {

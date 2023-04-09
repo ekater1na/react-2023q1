@@ -35,7 +35,10 @@ export const Pagination = (props: PaginationProps) => {
   return (
     <ul className="pagination-container" data-testid="pagination">
       {/* Left navigation arrow */}
-      <li className="pagination-item" onClick={onPrevious}>
+      <li
+        className={currentPage === 1 ? 'pagination-item disabled' : 'pagination-item'}
+        onClick={onPrevious}
+      >
         <div className="arrow left" />
       </li>
       {paginationRange &&
@@ -63,7 +66,10 @@ export const Pagination = (props: PaginationProps) => {
           );
         })}
       {/*  Right Navigation arrow */}
-      <li className="pagination-item" onClick={onNext}>
+      <li
+        className={currentPage === lastPage ? 'pagination-item disabled' : 'pagination-item'}
+        onClick={onNext}
+      >
         <div className="arrow right" />
       </li>
     </ul>
