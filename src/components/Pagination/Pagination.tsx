@@ -51,7 +51,13 @@ export const Pagination = (props: PaginationProps) => {
 
           // Render our Page Pills
           return (
-            <li key={i} className="pagination-item" onClick={() => onPageChange(pageNumber)}>
+            <li
+              key={i}
+              className={
+                pageNumber === currentPage ? 'pagination-item selected' : 'pagination-item'
+              }
+              onClick={() => onPageChange(pageNumber)}
+            >
               {pageNumber}
             </li>
           );
