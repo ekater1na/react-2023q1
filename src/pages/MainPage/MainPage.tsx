@@ -49,7 +49,7 @@ export const MainPage = () => {
 
         <div className="message-wrapper">
           {isLoading && <Loader />}
-          {!cards.length && !isLoading && <p>No data founded</p>}
+          {!cards.length && !isLoading && !error && <p>No data found</p>}
         </div>
 
         <div className="cards">
