@@ -5,16 +5,16 @@ import { Card } from '../../models/unsplash';
 
 interface ModalProps {
   visible: boolean;
-  toggle: () => void;
+  closeModal: () => void;
   item: Card;
 }
-export const Modal = ({ visible, toggle, item }: ModalProps) =>
+export const Modal = ({ visible, closeModal, item }: ModalProps) =>
   visible
     ? createPortal(
         <div className="" data-testid="modal">
           <div className="modal-pop" role="dialog" aria-modal="true">
             <div className="modal-title">
-              <button type="button" onClick={toggle}>
+              <button type="button" onClick={closeModal}>
                 x
               </button>
               <p className="modal-title-id">ID: {item.id || 'No id'}</p>
@@ -46,7 +46,7 @@ export const Modal = ({ visible, toggle, item }: ModalProps) =>
               <p>🌏 {item.user.location || 'no location'}</p>
             </div>
           </div>
-          <div className="modal-overlay"></div>
+          <div className="modal-overlay" onClick={closeModal}></div>
         </div>,
         document.body
       )
