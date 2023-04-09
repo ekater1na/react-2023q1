@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Card } from '../models/unsplash';
 import debounce from 'lodash/debounce';
 
@@ -12,6 +12,8 @@ export const useCards = (value: string) => {
 
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const [mount, setMount] = useState(false);
 
   const fetchCards = useMemo(
     () =>
@@ -44,9 +46,16 @@ export const useCards = (value: string) => {
     [currentPage, resultPerPage, sortOrder]
   );
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     fetchCards(value);
-  }, [value, fetchCards]);
+  }, [fetchCards, value]);
+
+  useEffect(() => {
+    if (!mount) {
+      setMount(true);
+      fetchData();
+    }
+  }, [fetchData, mount]);
 
   return {
     cards,
@@ -58,5 +67,6 @@ export const useCards = (value: string) => {
     setResultPerPage,
     setSortOrder,
     totalCount,
+    fetchData,
   };
 };

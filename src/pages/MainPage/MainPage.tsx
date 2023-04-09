@@ -22,6 +22,7 @@ export const MainPage = () => {
     setResultPerPage,
     setSortOrder,
     totalCount,
+    fetchData,
   } = useCards(searchValue);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export const MainPage = () => {
           setCurrentPage={setCurrentPage}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
+          fetchData={fetchData}
         />
         <OptionsBar
           setSortOrder={setSortOrder}
