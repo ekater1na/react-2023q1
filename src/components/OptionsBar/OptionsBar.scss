@@ -21,4 +21,13 @@
     margin: 8px;
     font-size: 1.5rem;
   }
+
+  p, label {
+    color: darkcyan;
+    font-weight: 600;
+    span {
+      color: #7030ce;
+      font-weight: bolder;
+    }
+  }
 }
