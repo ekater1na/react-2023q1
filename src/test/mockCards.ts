@@ -1,6 +1,6 @@
-import { Response } from '../models/unsplash';
+import { ResponseData } from '../models/unsplash';
 
-export const ResponseData: Response = {
+export const MockResponse: ResponseData = {
   total: 10000,
   total_pages: 1000,
   results: [
