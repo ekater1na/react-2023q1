@@ -1,7 +1,7 @@
 .pagination-container {
   display: flex;
   justify-content: center;
-  //list-style-type: none;
+  margin-top: 10px;
 
   .pagination-item {
     padding: 0 12px;
@@ -23,20 +23,18 @@
       cursor: default;
     }
     &:hover {
-      background-color: rgba(0, 0, 0, 0.04);
+      background-color: rgb(81, 176, 217);
       cursor: pointer;
     }
 
     &.selected {
-      background-color: rgba(0, 0, 0, 0.08);
+      background-color: rgb(119, 139, 225);
     }
 
     .arrow {
       &::before {
         position: relative;
-        /* top: 3pt; Uncomment this to lower the icons as requested in comments*/
         content: '';
-        /* By using an em scale, the arrows will size with the font */
         display: inline-block;
         width: 0.4em;
         height: 0.4em;

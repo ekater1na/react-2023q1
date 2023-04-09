@@ -19,7 +19,7 @@ export const Modal = ({ visible, toggle, item }: ModalProps) =>
               </button>
               <p className="modal-title-id">ID: {item.id || 'No id'}</p>
               <p className="modal-title-desc" title={item.description}>
-                {item.description || 'No description'}
+                {item.description}
               </p>
             </div>
             <img
