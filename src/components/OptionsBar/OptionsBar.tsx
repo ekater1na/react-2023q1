@@ -19,11 +19,11 @@ export const OptionsBar = ({ setSortOrder, setResultPerPage, totalCount }: Optio
     <div className="options-bar-container" data-testid="options-bar">
       <label>
         Result per page:
-        <input type="text" name="name" placeholder="30 max" onChange={setResult} />
+        <input className='options-bar-input' type="text" name="name" placeholder="30 max" onChange={setResult} />
       </label>
       <label>
         Sort order:
-        <select onChange={setSort}>
+        <select className='options-bar-select' onChange={setSort}>
           <option value="latest">latest</option>
           <option value="oldest">oldest</option>
           <option value="popular">popular</option>

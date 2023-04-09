@@ -26,8 +26,9 @@ export const CardItem = ({ item }: CardItemProps) => {
 
           <div className="card__details truncate">
             <ul>
-              <li className="truncate">👍{likes}</li>
-              <li className="truncate">📅{date}</li>
+              <li className="truncate">
+                👍{likes} 📅 {date}
+              </li>
               <li className="truncate">👤{user.instagram_username || 'no username'}</li>
               <li className="truncate">🌍{user.location || 'unknown location'}</li>
             </ul>
