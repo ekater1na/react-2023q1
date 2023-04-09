@@ -26,7 +26,7 @@ export const SearchBar = (props: SearchBarProps) => {
             className="search-bar-input"
             type="text"
             name="name"
-            //onChange={(e) => onFormChange(e)}
+            onChange={(e) => onFormChange(e)}
             value={searchValue}
           />
           <button className="search-bar-button" type="submit">
