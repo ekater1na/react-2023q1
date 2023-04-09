@@ -5,16 +5,20 @@
   gap: 10px;
   font-size: 1.5rem;
 
-  input {
-    width: 100px;
+  .options-bar-input {
+    width: 140px;
+    height: 30px;
     border-radius: 8px;
     margin: 8px;
+    font-size: 1.5rem;
   }
 
-  select {
+  .options-bar-select {
     width: 150px;
-    padding: 10px;
+    height: 30px;
+    padding: 0 10px;
     border-radius: 8px;
     margin: 8px;
+    font-size: 1.5rem;
   }
 }
