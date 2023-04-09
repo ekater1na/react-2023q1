@@ -11,11 +11,12 @@ export const SearchBar = (props: SearchBarProps) => {
 
   const onFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
-    setCurrentPage(1);
   };
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
+    setSearchValue(searchValue);
+    setCurrentPage(1);
   };
 
   return (

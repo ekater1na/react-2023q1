@@ -6,5 +6,9 @@ interface ErrorProps {
 }
 
 export const Error = ({ error }: ErrorProps) => {
-  return <div data-testid="error">Error: {error}</div>;
+  return (
+    <div className="error-wrapper" data-testid="error">
+      Error: {error}
+    </div>
+  );
 };
