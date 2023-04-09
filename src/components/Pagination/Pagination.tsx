@@ -19,8 +19,10 @@ export const Pagination = (props: PaginationProps) => {
   });
 
   // If there are less than 2 times in pagination range we shall not render the component
-  if (currentPage === 0 || paginationRange.length < 2) {
-    return null;
+  if (paginationRange) {
+    if (currentPage === 0 || paginationRange.length < 2) {
+      return null;
+    }
   }
 
   const onNext = () => {
@@ -31,7 +33,7 @@ export const Pagination = (props: PaginationProps) => {
     onPageChange(currentPage - 1);
   };
 
-  const lastPage = paginationRange[paginationRange.length - 1];
+  const lastPage = paginationRange ? paginationRange[paginationRange.length - 1] : '';
   return (
     <ul className="pagination-container" data-testid="pagination">
       {/* Left navigation arrow */}
@@ -42,9 +44,9 @@ export const Pagination = (props: PaginationProps) => {
         <div className="arrow left" />
       </li>
       {paginationRange &&
-        paginationRange.map((pageNumber: number, i: number) => {
+        paginationRange.map((pageNumber: string | number, i: number) => {
           // If the pageItem is a DOT, render the DOTS unicode character
-          if (pageNumber === DOTS) {
+          if (pageNumber + '' === DOTS) {
             return (
               <li key={i} className="pagination-item dots">
                 &#8230;
@@ -59,7 +61,7 @@ export const Pagination = (props: PaginationProps) => {
               className={
                 pageNumber === currentPage ? 'pagination-item selected' : 'pagination-item'
               }
-              onClick={() => onPageChange(pageNumber)}
+              onClick={() => onPageChange(+pageNumber)}
             >
               {pageNumber}
             </li>
