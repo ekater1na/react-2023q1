@@ -34,8 +34,8 @@ export const CardItem = ({ item }: CardItemProps) => {
             </ul>
           </div>
         </div>
-        <Modal visible={visible} toggle={toggle} item={item} />
       </div>
+      <Modal visible={visible} toggle={toggle} item={item} />
     </>
   );
 };
