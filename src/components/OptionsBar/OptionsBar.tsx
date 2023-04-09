@@ -17,7 +17,7 @@ export const OptionsBar = ({ setSortOrder, setResultPerPage, totalCount }: Optio
 
   return (
     <div className="options-bar-container" data-testid="options-bar">
-      <label>
+      <label title="According API rules result per page can be no more than 30 items">
         Result per page:
         <input
           className="options-bar-input"
