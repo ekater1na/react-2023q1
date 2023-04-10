@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 
 export const MainPage = () => {
-  const searchValue = useSelector((state: RootState) => state.searchText.value);
+  const searchValue = useSelector((state: RootState) => state.searchText.searchValue);
 
   const {
     cards,
