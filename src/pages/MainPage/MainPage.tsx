@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './MainPage.scss';
 import { CardItem } from '../../components/CardItem/CardItem';
 import { Loader } from '../../components/Loader/Loader';
@@ -8,9 +8,11 @@ import { OptionsBar } from '../../components/OptionsBar/OptionsBar';
 import { Card } from '../../models/unsplash';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { useCards } from '../../hooks/useCard';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../store';
 
 export const MainPage = () => {
-  const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('Search') || 'bali');
+  const searchValue = useSelector((state: RootState) => state.searchText.value);
 
   const {
     cards,
@@ -25,10 +27,6 @@ export const MainPage = () => {
     fetchData,
   } = useCards(searchValue);
 
-  useEffect(() => {
-    localStorage.setItem('Search', searchValue);
-  }, [searchValue]);
-
   const setPage = (currentPage: number) => {
     setCurrentPage(currentPage);
   };
@@ -36,12 +34,7 @@ export const MainPage = () => {
   return (
     <div className="main-page-wrapper" data-testid="main-page">
       <section>
-        <SearchBar
-          setCurrentPage={setCurrentPage}
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          fetchData={fetchData}
-        />
+        <SearchBar setCurrentPage={setCurrentPage} fetchData={fetchData} />
         <OptionsBar
           setSortOrder={setSortOrder}
           setResultPerPage={setResultPerPage}

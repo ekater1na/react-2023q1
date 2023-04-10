@@ -4,10 +4,18 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../../App';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from '../../../store';
 
 describe('App', () => {
   it('should be shown', async () => {
-    render(<App />, { wrapper: BrowserRouter });
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    );
 
     expect(screen.getByTestId(/app/i)).toBeTruthy();
 
