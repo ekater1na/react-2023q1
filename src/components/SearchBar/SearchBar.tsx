@@ -9,7 +9,7 @@ interface SearchBarProps {
 }
 
 export const SearchBar = (props: SearchBarProps) => {
-  const searchValue = useSelector((state: RootState) => state.searchText.value);
+  const searchValue = useSelector((state: RootState) => state.searchText.searchValue);
   const dispatch = useDispatch();
 
   const { fetchData } = props;
