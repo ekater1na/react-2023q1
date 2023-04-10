@@ -5,7 +5,14 @@ import { SearchBar } from '../../components/SearchBar/SearchBar';
 
 describe('SearchBar', () => {
   it('should be shown', () => {
-    render(<SearchBar searchValue="test" setCurrentPage={() => {}} setSearchValue={() => {}} />);
+    render(
+      <SearchBar
+        searchValue="test"
+        setCurrentPage={() => {}}
+        setSearchValue={() => {}}
+        fetchData={() => {}}
+      />
+    );
     expect(screen.getByTestId('search-bar')).toBeDefined();
   });
 });
