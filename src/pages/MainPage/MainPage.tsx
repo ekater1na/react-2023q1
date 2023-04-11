@@ -47,30 +47,30 @@ export const MainPage = () => {
           setResultPerPage={setResultPerPage}
           totalCount={totalCount}
         />
+
         {error && <Error error={error} />}
+        {cards && !isLoading && (
+          <>
+            <div className="cards">
+              {cards && cards.map((value: Card) => <CardItem key={value.id} item={value} />)}
+            </div>
 
-        <div className="message-wrapper">
-          {isLoading && <Loader />}
-          {!cards.length && !isLoading && !error && <p>No data found</p>}
-        </div>
-
-        <div className="cards">
-          {!isLoading &&
-            !error &&
-            cards &&
-            cards.map((value: Card) => <CardItem key={value.id} item={value} />)}
-        </div>
-
-        <div className="u-center-text u-margin-top-huge">
-          {!isLoading && !error && cards && (
-            <Pagination
-              currentPage={currentPage}
-              totalCount={totalCount}
-              pageSize={resultPerPage}
-              onPageChange={(currentPage) => setPage(currentPage)}
-            />
-          )}
-        </div>
+            <div className="u-center-text u-margin-top-huge">
+              <Pagination
+                currentPage={currentPage}
+                totalCount={totalCount}
+                pageSize={resultPerPage}
+                onPageChange={(currentPage) => setPage(currentPage)}
+              />
+            </div>
+          </>
+        )}
+        {isLoading && <Loader />}
+        {!cards.length && !isLoading && (
+          <div className="message-wrapper">
+            <p>No data</p>
+          </div>
+        )}
       </section>
     </div>
   );
