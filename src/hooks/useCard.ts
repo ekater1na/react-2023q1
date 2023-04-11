@@ -36,9 +36,8 @@ export const useCards = (value: string) => {
             .then((response) => {
               dispatch(storeCard(response.data.results));
               setTotalCount(response.data.total_pages);
+              setLoading(false);
             });
-
-          setLoading(false);
         } catch (e: unknown) {
           const error = e as AxiosError;
           setLoading(false);
