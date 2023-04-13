@@ -7,7 +7,7 @@ import { OptionsBar } from '../../components/OptionsBar/OptionsBar';
 import { Card } from '../../models/unsplash';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../store';
+import { RootState } from '../../store/store';
 import { useGetImageByNameQuery } from '../../store/api';
 import { storeCard, updateCurrentPage, updateTotalCount } from '../../feature/searchTextSlice';
 

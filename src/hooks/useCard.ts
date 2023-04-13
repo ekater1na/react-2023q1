@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import debounce from 'lodash/debounce';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeCard, updateTotalCount } from '../feature/searchTextSlice';
-import { RootState } from '../../store';
+import { RootState } from '../store/store';
 
 export const useCards = (value: string) => {
   const [currentPage, setCurrentPage] = useState<number>(1);

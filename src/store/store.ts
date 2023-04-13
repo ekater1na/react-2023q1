@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import searchTextReducer from './src/feature/searchTextSlice';
-import formReducer from './src/feature/formSlice';
-import { imageApi } from './src/store/api';
+import searchTextReducer from '../feature/searchTextSlice';
+import formReducer from '../feature/formSlice';
+import { imageApi } from './api';
 
 export const store = configureStore({
   reducer: {
