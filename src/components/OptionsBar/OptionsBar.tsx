@@ -3,9 +3,12 @@ import './OptionsBar.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import { updateResultPerPage, updateSortOrder } from '../../feature/searchTextSlice';
+import { useGetImageByNameQuery } from '../../store/api';
 
 export const OptionsBar = () => {
-  const totalCount = useSelector((state: RootState) => state.searchText.searchValue.totalCount);
+  const searchValue = useSelector((state: RootState) => state.searchText.searchValue);
+
+  const { data } = useGetImageByNameQuery(searchValue.value);
 
   const dispatch = useDispatch();
   const setResult = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +39,7 @@ export const OptionsBar = () => {
         </select>
       </label>
       <p>
-        Total pages: <span>{totalCount}</span>
+        Total pages: <span>{data?.total_pages}</span>
       </p>
     </div>
   );
