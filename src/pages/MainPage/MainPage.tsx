@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './MainPage.scss';
 import { CardItem } from '../../components/CardItem/CardItem';
 import { Loader } from '../../components/Loader/Loader';
-import { Error } from '../../components/Error/Error';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { OptionsBar } from '../../components/OptionsBar/OptionsBar';
 import { Card } from '../../models/unsplash';
@@ -30,14 +29,29 @@ export const MainPage = () => {
     dispatch(updateCurrentPage(currentPage));
   };
 
+  if (error) {
+    if ('status' in error) {
+      // you can access all properties of `FetchBaseQueryError` here
+      const errMsg = 'error' in error ? error.error : JSON.stringify(error.data);
+
+      return (
+        <div>
+          <div>An error has occurred:</div>
+          <div>{errMsg}</div>
+        </div>
+      );
+    } else {
+      // you can access all properties of `SerializedError` here
+      return <div>{error.message}</div>;
+    }
+  }
+
   return (
     <div className="main-page-wrapper" data-testid="main-page">
       <section>
         <SearchBar />
         <OptionsBar />
         <div className="message-wrapper">
-          {/*TODO uncomment*/}
-          {/*{error && <Error error={error} />}*/}
           {isLoading && <Loader />}
           {!data?.results && !isLoading && !error && <p>No data found</p>}
         </div>
