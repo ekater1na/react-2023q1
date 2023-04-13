@@ -13,9 +13,9 @@ import { RootState } from '../../../store';
 
 export const MainPage = () => {
   const searchValue = useSelector((state: RootState) => state.searchText.searchValue);
+  const cards = useSelector((state: RootState) => state.searchText.searchResult);
 
   const {
-    cards,
     error,
     isLoading,
     currentPage,

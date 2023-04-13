@@ -1,25 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { Card } from '../models/unsplash';
 
 export interface SearchTextState {
   searchValue: string;
+  searchResult: Card[];
 }
 
 const initialState: SearchTextState = {
   searchValue: 'madeira',
+  searchResult: [],
 };
 
 export const searchTextSlice = createSlice({
   name: 'searchText',
   initialState,
   reducers: {
-    incrementByAmount: (state, action: PayloadAction<string>) => {
+    updateSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
+    },
+    storeCard: (state, action: PayloadAction<Card[]>) => {
+      state.searchResult = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { incrementByAmount } = searchTextSlice.actions;
+export const { updateSearchValue, storeCard } = searchTextSlice.actions;
 
 export default searchTextSlice.reducer;

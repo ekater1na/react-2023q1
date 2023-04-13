@@ -2,7 +2,8 @@ import React, { ChangeEvent, FormEvent } from 'react';
 import './SearchBar.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store';
-import { incrementByAmount } from '../../feature/searchTextSlice';
+import { updateSearchValue } from '../../feature/searchTextSlice';
+
 interface SearchBarProps {
   setCurrentPage?: (currentPage: number) => void;
   fetchData: (searchValue: string) => void;
@@ -15,7 +16,7 @@ export const SearchBar = (props: SearchBarProps) => {
   const { fetchData } = props;
 
   const onFormChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(incrementByAmount(e.target.value));
+    dispatch(updateSearchValue(e.target.value));
   };
 
   const onFormSubmit = (e: FormEvent) => {
