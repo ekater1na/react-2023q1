@@ -1,27 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './FormPage.scss';
 import { User } from '../../models/user';
 import { FormCard } from '../../components/FormCard/FormCard';
 import { Form } from '../../components/Form/Form';
-
-type FormPageState = {
-  formData: User[];
-};
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 export const FormPage = () => {
-  const [formData, setFormData] = useState<FormPageState>({ formData: [] });
-
-  const addFormData = (data: User) => {
-    setFormData({
-      formData: [...formData.formData, data],
-    });
-  };
+  const formData = useSelector((state: RootState) => state.form);
 
   return (
     <div className="form-page-wrapper" data-testid="form-page">
-      <Form setFormData={addFormData} />
+      <Form />
       <div className="form-card-content">
-        {formData && formData.formData.map((user: User) => <FormCard key={user.id} user={user} />)}
+        {formData && formData.cards.map((user: User) => <FormCard key={user.id} user={user} />)}
       </div>
     </div>
   );
