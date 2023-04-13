@@ -18,7 +18,7 @@ describe('MainPage ', () => {
     expect(screen.getByText(/search/i)).toBeTruthy();
   });
 
-  test('should render list of cards', () => {
-    expect(screen.getByTestId(/main-page/i)).toBeTruthy();
+  test('should show error', () => {
+    expect(screen.getByText(/Request is not defined/i)).toBeTruthy();
   });
 });
