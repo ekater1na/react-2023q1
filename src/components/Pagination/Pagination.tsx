@@ -7,8 +7,7 @@ import { RootState } from '../../store/store';
 interface PaginationProps {
   onPageChange: (currentPage: number) => void;
 }
-export const Pagination = (props: PaginationProps) => {
-  const { onPageChange } = props;
+export const Pagination = ({ onPageChange }: PaginationProps) => {
   const currentPage = useSelector((state: RootState) => state.searchText.searchValue.currentPage);
   const totalCount = useSelector((state: RootState) => state.searchText.searchValue.totalCount);
   const pageSize = useSelector((state: RootState) => state.searchText.searchValue.resultPerPage);
