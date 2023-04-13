@@ -4,16 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import { updateSearchValue } from '../../feature/searchTextSlice';
 
-interface SearchBarProps {
-  setCurrentPage?: (currentPage: number) => void;
-  fetchCards: (searchValue: string) => void;
-}
-
-export const SearchBar = (props: SearchBarProps) => {
+export const SearchBar = () => {
   const searchValue = useSelector((state: RootState) => state.searchText.searchValue);
   const dispatch = useDispatch();
-
-  const { fetchCards } = props;
 
   const onFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(updateSearchValue(e.target.value));
@@ -21,7 +14,7 @@ export const SearchBar = (props: SearchBarProps) => {
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    fetchCards(searchValue.value);
+    //fetchCards(searchValue.value);
   };
 
   return (
