@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import './OptionsBar.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../store';
+import { RootState } from '../../store/store';
 import { updateResultPerPage, updateSortOrder } from '../../feature/searchTextSlice';
 import { useGetImageByNameQuery } from '../../store/api';
 

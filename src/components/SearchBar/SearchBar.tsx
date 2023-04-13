@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent } from 'react';
 import './SearchBar.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../store';
+import { RootState } from '../../store/store';
 import { updateSearchValue } from '../../feature/searchTextSlice';
 
 export const SearchBar = () => {

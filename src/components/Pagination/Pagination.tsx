@@ -2,7 +2,7 @@ import React from 'react';
 import './Pagination.scss';
 import { DOTS, usePagination } from '../../hooks/usePagination';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../store';
+import { RootState } from '../../store/store';
 
 interface PaginationProps {
   onPageChange: (currentPage: number) => void;

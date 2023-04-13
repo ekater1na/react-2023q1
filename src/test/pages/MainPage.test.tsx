@@ -3,7 +3,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MainPage } from '../../pages/MainPage/MainPage';
 import { Provider } from 'react-redux';
-import { store } from '../../../store';
+import { store } from '../../store/store';
 
 describe('MainPage ', () => {
   beforeEach(() => {
