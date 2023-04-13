@@ -1,17 +1,17 @@
 import React from 'react';
 import './Pagination.scss';
 import { DOTS, usePagination } from '../../hooks/usePagination';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../store';
 
 interface PaginationProps {
   onPageChange: (currentPage: number) => void;
-  totalCount: number;
-  siblingCount?: number;
-  currentPage: number;
-  pageSize: number;
 }
 export const Pagination = (props: PaginationProps) => {
-  const { onPageChange, currentPage, totalCount, pageSize } = props;
-  //const totalCount = useSelector((state: RootState) => state.searchText.searchValue.totalCount);
+  const { onPageChange } = props;
+  const currentPage = useSelector((state: RootState) => state.searchText.searchValue.currentPage);
+  const totalCount = useSelector((state: RootState) => state.searchText.searchValue.totalCount);
+  const pageSize = useSelector((state: RootState) => state.searchText.searchValue.resultPerPage);
 
   const paginationRange = usePagination({
     currentPage,

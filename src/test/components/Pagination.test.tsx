@@ -9,7 +9,7 @@ describe('Pagination', () => {
   it('should be shown', () => {
     render(
       <Provider store={store}>
-        <Pagination currentPage={1} onPageChange={() => {}} pageSize={1} />
+        <Pagination onPageChange={() => {}} />
       </Provider>
     );
     expect(screen.getByTestId('pagination')).toBeDefined();
