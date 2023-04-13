@@ -1,19 +1,22 @@
 import axios, { AxiosError } from 'axios';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import debounce from 'lodash/debounce';
-import { useDispatch } from 'react-redux';
-import { storeCard } from '../feature/searchTextSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { storeCard, updateTotalCount } from '../feature/searchTextSlice';
+import { RootState } from '../../store';
 
 export const useCards = (value: string) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [resultPerPage, setResultPerPage] = useState<number>(10);
-  const [totalCount, setTotalCount] = useState<number>(0);
-  const [sortOrder, setSortOrder] = useState<string>('popular');
 
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const [mount, setMount] = useState(false);
+
+  const sortOrder = useSelector((state: RootState) => state.searchText.searchValue.sortOrder);
+  const resultPerPage = useSelector(
+    (state: RootState) => state.searchText.searchValue.resultPerPage
+  );
 
   const dispatch = useDispatch();
 
@@ -35,7 +38,8 @@ export const useCards = (value: string) => {
             })
             .then((response) => {
               dispatch(storeCard(response.data.results));
-              setTotalCount(response.data.total_pages);
+              dispatch(updateTotalCount(response.data.total_pages));
+              //setTotalCount();
               setLoading(false);
             });
         } catch (e: unknown) {
@@ -64,9 +68,6 @@ export const useCards = (value: string) => {
     currentPage,
     setCurrentPage,
     resultPerPage,
-    setResultPerPage,
-    setSortOrder,
-    totalCount,
-    fetchData,
+    fetchCards,
   };
 };

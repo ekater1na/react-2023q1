@@ -1,18 +1,18 @@
 import React, { ChangeEvent } from 'react';
 import './OptionsBar.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../store';
+import { updateResultPerPage, updateSortOrder } from '../../feature/searchTextSlice';
 
-interface OptionsBarProps {
-  setSortOrder: (sortOrder: string) => void;
-  setResultPerPage: (resultPerPage: number) => void;
-  totalCount: number;
-}
+export const OptionsBar = () => {
+  const totalCount = useSelector((state: RootState) => state.searchText.searchValue.totalCount);
 
-export const OptionsBar = ({ setSortOrder, setResultPerPage, totalCount }: OptionsBarProps) => {
+  const dispatch = useDispatch();
   const setResult = (e: ChangeEvent<HTMLInputElement>) => {
-    setResultPerPage(Number(e.target.value));
+    dispatch(updateResultPerPage(Number(e.target.value)));
   };
   const setSort = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSortOrder(e.target.value);
+    dispatch(updateSortOrder(e.target.value));
   };
 
   return (

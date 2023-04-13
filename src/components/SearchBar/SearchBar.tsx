@@ -6,14 +6,14 @@ import { updateSearchValue } from '../../feature/searchTextSlice';
 
 interface SearchBarProps {
   setCurrentPage?: (currentPage: number) => void;
-  fetchData: (searchValue: string) => void;
+  fetchCards: (searchValue: string) => void;
 }
 
 export const SearchBar = (props: SearchBarProps) => {
   const searchValue = useSelector((state: RootState) => state.searchText.searchValue);
   const dispatch = useDispatch();
 
-  const { fetchData } = props;
+  const { fetchCards } = props;
 
   const onFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(updateSearchValue(e.target.value));
@@ -21,7 +21,7 @@ export const SearchBar = (props: SearchBarProps) => {
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    fetchData(searchValue);
+    fetchCards(searchValue.value);
   };
 
   return (
@@ -33,7 +33,7 @@ export const SearchBar = (props: SearchBarProps) => {
             type="text"
             name="name"
             onChange={(e) => onFormChange(e)}
-            value={searchValue}
+            value={searchValue.value}
           />
           <button className="search-bar-button" type="submit">
             Search
