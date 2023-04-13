@@ -15,17 +15,9 @@ export const MainPage = () => {
   const searchValue = useSelector((state: RootState) => state.searchText.searchValue);
   const cards = useSelector((state: RootState) => state.searchText.searchResult);
 
-  const {
-    error,
-    isLoading,
-    currentPage,
-    setCurrentPage,
-    resultPerPage,
-    setResultPerPage,
-    setSortOrder,
-    totalCount,
-    fetchData,
-  } = useCards(searchValue);
+  const { error, isLoading, currentPage, setCurrentPage, resultPerPage, fetchCards } = useCards(
+    searchValue.value
+  );
 
   const setPage = (currentPage: number) => {
     setCurrentPage(currentPage);
@@ -34,36 +26,31 @@ export const MainPage = () => {
   return (
     <div className="main-page-wrapper" data-testid="main-page">
       <section>
-        <SearchBar setCurrentPage={setCurrentPage} fetchData={fetchData} />
-        <OptionsBar
-          setSortOrder={setSortOrder}
-          setResultPerPage={setResultPerPage}
-          totalCount={totalCount}
-        />
-
+        <SearchBar setCurrentPage={setCurrentPage} fetchCards={fetchCards} />
+        <OptionsBar />
         {error && <Error error={error} />}
-        {cards && !isLoading && (
-          <>
-            <div className="cards">
-              {cards && cards.map((value: Card) => <CardItem key={value.id} item={value} />)}
-            </div>
 
-            <div className="u-center-text u-margin-top-huge">
-              <Pagination
-                currentPage={currentPage}
-                totalCount={totalCount}
-                pageSize={resultPerPage}
-                onPageChange={(currentPage) => setPage(currentPage)}
-              />
-            </div>
-          </>
-        )}
-        {isLoading && <Loader />}
-        {!cards.length && !isLoading && (
-          <div className="message-wrapper">
-            <p>No data</p>
-          </div>
-        )}
+        <div className="message-wrapper">
+          {isLoading && <Loader />}
+          {!cards.length && !isLoading && !error && <p>No data found</p>}
+        </div>
+
+        <div className="cards">
+          {!isLoading &&
+            !error &&
+            cards &&
+            cards.map((value: Card) => <CardItem key={value.id} item={value} />)}
+        </div>
+
+        <div className="u-center-text u-margin-top-huge">
+          {!isLoading && !error && cards && (
+            <Pagination
+              currentPage={currentPage}
+              pageSize={resultPerPage}
+              onPageChange={(currentPage) => setPage(currentPage)}
+            />
+          )}
+        </div>
       </section>
     </div>
   );
