@@ -4,12 +4,11 @@ import './Form.scss';
 import { User } from '../../models/user';
 import { countries } from '../../consts/countries';
 import { Country } from '../../models/country';
+import { useDispatch } from 'react-redux';
+import { storeFormCards } from '../../feature/formSlice';
 
-interface FormProps {
-  setFormData: (value: User) => void;
-}
-
-export const Form = ({ setFormData }: FormProps) => {
+export const Form = () => {
+  const dispatch = useDispatch();
   const {
     register,
     formState: { errors },
@@ -23,12 +22,10 @@ export const Form = ({ setFormData }: FormProps) => {
   const [submitMessage, setSubmitMessage] = useState(false);
 
   const onSubmit = (data: User) => {
+    dispatch(storeFormCards(data));
+
     setSubmitMessage(true);
-    setFormData({
-      ...data,
-      id: Math.random().toString(),
-      photoUrl: URL.createObjectURL(data.photo ? data.photo[0] : new Blob()),
-    });
+
     setTimeout(reset, 500);
     setTimeout(() => setSubmitMessage(false), 3000);
   };

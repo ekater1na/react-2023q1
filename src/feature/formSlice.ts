@@ -14,13 +14,17 @@ export const formSlice = createSlice({
   name: 'form',
   initialState,
   reducers: {
-    storeCards: (state, action: PayloadAction<User[]>) => {
-      state.cards = action.payload;
+    storeFormCards: (state, action: PayloadAction<User>) => {
+      state.cards.push({
+        ...action.payload,
+        id: Math.random().toString(),
+        photoUrl: URL.createObjectURL(action.payload.photo ? action.payload.photo[0] : new Blob()),
+      });
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { storeCards } = formSlice.actions;
+export const { storeFormCards } = formSlice.actions;
 
 export default formSlice.reducer;
