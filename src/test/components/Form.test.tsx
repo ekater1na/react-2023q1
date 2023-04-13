@@ -2,41 +2,29 @@ import { describe, expect } from 'vitest';
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Form } from '../../components/Form/Form';
-import { User } from '../../models/user';
+import { store } from '../../store/store';
+import { Provider } from 'react-redux';
 
 describe('Form', () => {
-  const mockFormData: User = {
-    id: '0',
-    firstName: 'string',
-    lastName: 'string',
-    birthDay: 'string',
-    country: 'string',
-    sex: 'string',
-    photo: {} as FileList,
-    agreement: true,
-  };
+  beforeEach(() => {
+    render(
+      <Provider store={store}>
+        <Form />
+      </Provider>
+    );
+  });
 
-  const setFormData = (value: User) => {
-    return value;
-  };
-
-  it('should be shown', () => {
-    render(<Form setFormData={() => setFormData(mockFormData)} />);
-
+  test('should be shown', () => {
     expect(screen.getByTestId('form')).toBeDefined();
   });
 
-  it('should display required error when value is invalid', async () => {
-    render(<Form setFormData={() => setFormData(mockFormData)} />);
-
+  test('should display required error when value is invalid', async () => {
     fireEvent.submit(screen.getByTestId('submit'));
 
     expect(await screen.findAllByText('Please add data')).toHaveLength(7);
   });
 
-  it('should display matching error when firstName and lastname are invalid', async () => {
-    render(<Form setFormData={() => setFormData(mockFormData)} />);
-
+  test('should display matching error when firstName and lastname are invalid', async () => {
     fireEvent.input(screen.getByTestId('first-name'), {
       target: {
         value: 'test first name',
@@ -54,9 +42,7 @@ describe('Form', () => {
     expect(await screen.findAllByText('Please add data')).toHaveLength(5);
   });
 
-  it('should display error when some value is valid', async () => {
-    render(<Form setFormData={() => setFormData(mockFormData)} />);
-
+  test('should display error when some value is valid', async () => {
     fireEvent.input(screen.getByTestId('first-name'), {
       target: {
         value: 'nice firstName',
