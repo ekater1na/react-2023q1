@@ -1,20 +1,11 @@
 import React from 'react';
 import './Error.scss';
 
-export interface ErrorMessageProps {
-  error: {
-    data: {
-      errors: string[];
-    };
-    status: number;
-  };
-}
-
-export const Error = ({ error }: ErrorMessageProps) => {
+export const Error = (error: string) => {
   return (
     <div className="error-wrapper" data-testid="error">
-      <div>An error has occurred: {error.status}</div>
-      {error.data.errors && <div>{error.data.errors}</div>}
+      <div>An error has occurred: </div>
+      <div>{error}</div>
     </div>
   );
 };

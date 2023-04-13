@@ -11,6 +11,8 @@ export const imageApi = createApi({
       return headers;
     },
   }),
+  tagTypes: ['Cards'],
+
   endpoints: (builder) => ({
     getImageByName: builder.query<ResponseData, string>({
       query: (value) => `photos?&query=${value}`,
@@ -20,7 +22,7 @@ export const imageApi = createApi({
       //   order_by: sortOrder,
       // },
 
-      //providesTags: ['Cards'],
+      providesTags: ['Cards'],
       //transformResponse: (response: ResponseData) => response.results,
     }),
   }),
