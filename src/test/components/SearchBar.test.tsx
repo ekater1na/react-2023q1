@@ -9,7 +9,7 @@ describe('SearchBar', () => {
   it('should be shown', () => {
     render(
       <Provider store={store}>
-        <SearchBar setCurrentPage={() => {}} fetchData={() => {}} />
+        <SearchBar setCurrentPage={() => {}} fetchCards={() => {}} />
       </Provider>
     );
     expect(screen.getByTestId('search-bar')).toBeDefined();
