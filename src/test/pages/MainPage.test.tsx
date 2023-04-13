@@ -20,7 +20,6 @@ describe('MainPage ', () => {
 
   test('should render list of cards', () => {
     expect(screen.getByTestId(/main-page/i)).toBeTruthy();
-    //expect(screen.getAllByTestId('card')).toHaveLength(3);
   });
 
   test('set localStorage value', () => {
