@@ -61,12 +61,7 @@ export const MainPage = () => {
           ))}
         </div>
         <div className="u-center-text u-margin-top-huge">
-          <Pagination
-            currentPage={searchValue.currentPage}
-            totalCount={searchValue.totalCount}
-            pageSize={searchValue.resultPerPage}
-            onPageChange={(currentPage) => setPage(currentPage)}
-          />
+          <Pagination onPageChange={(currentPage) => setPage(currentPage)} />
         </div>
       </section>
     </div>
