@@ -10,14 +10,15 @@ import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { useCards } from '../../hooks/useCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
+import { useGetImageByNameQuery } from '../../store/api';
 
 export const MainPage = () => {
   const searchValue = useSelector((state: RootState) => state.searchText.searchValue);
   const cards = useSelector((state: RootState) => state.searchText.searchResult);
 
-  const { error, isLoading, currentPage, setCurrentPage, resultPerPage, fetchCards } = useCards(
-    searchValue.value
-  );
+  const { currentPage, setCurrentPage, resultPerPage, fetchCards } = useCards(searchValue.value);
+
+  const { data, isLoading, isError, error } = useGetImageByNameQuery(searchValue.value);
 
   const setPage = (currentPage: number) => {
     setCurrentPage(currentPage);
@@ -28,22 +29,19 @@ export const MainPage = () => {
       <section>
         <SearchBar setCurrentPage={setCurrentPage} fetchCards={fetchCards} />
         <OptionsBar />
-        {error && <Error error={error} />}
-
         <div className="message-wrapper">
+          {/*TODO uncomment*/}
+          {/*{error && <Error error={error} />}*/}
           {isLoading && <Loader />}
-          {!cards.length && !isLoading && !error && <p>No data found</p>}
+          {!cards.length && !isLoading && !isError && <p>No data found</p>}
         </div>
-
         <div className="cards">
           {!isLoading &&
-            !error &&
-            cards &&
-            cards.map((value: Card) => <CardItem key={value.id} item={value} />)}
+            !isError &&
+            data?.results.map((value: Card) => <CardItem key={value.id} item={value} />)}
         </div>
-
         <div className="u-center-text u-margin-top-huge">
-          {!isLoading && !error && cards && (
+          {!isLoading && !isError && cards && (
             <Pagination
               currentPage={currentPage}
               pageSize={resultPerPage}
