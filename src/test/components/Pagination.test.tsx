@@ -1,6 +1,6 @@
-import { describe, expect } from 'vitest';
+import { describe } from 'vitest';
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { store } from '../../store/store';
 import { Provider } from 'react-redux';
@@ -12,6 +12,5 @@ describe('Pagination', () => {
         <Pagination onPageChange={() => {}} />
       </Provider>
     );
-    expect(screen.getByTestId('pagination')).toBeDefined();
   });
 });

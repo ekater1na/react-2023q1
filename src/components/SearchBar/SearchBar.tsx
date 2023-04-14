@@ -2,14 +2,14 @@ import React, { ChangeEvent, FormEvent } from 'react';
 import './SearchBar.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { updateSearchValue } from '../../feature/searchTextSlice';
-import { useLazyGetImageByNameQuery } from '../../store/api';
+import { updateCurrentPage, updateSearchValue } from '../../feature/searchTextSlice';
+import { useLazyGetImagesQuery } from '../../store/api';
 
 export const SearchBar = () => {
   const searchValue = useSelector((state: RootState) => state.searchText.searchValue);
   const dispatch = useDispatch();
 
-  const [trigger] = useLazyGetImageByNameQuery();
+  const [trigger] = useLazyGetImagesQuery();
 
   const onFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(updateSearchValue(e.target.value));
@@ -17,7 +17,13 @@ export const SearchBar = () => {
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    trigger(searchValue.value);
+    dispatch(updateCurrentPage(1));
+    trigger({
+      value: searchValue.value,
+      currentPage: searchValue.currentPage,
+      resultPerPage: searchValue.resultPerPage,
+      sortOrder: searchValue.sortOrder,
+    });
   };
 
   return (
