@@ -3,10 +3,13 @@ import './SearchBar.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { updateSearchValue } from '../../feature/searchTextSlice';
+import { useLazyGetImageByNameQuery } from '../../store/api';
 
 export const SearchBar = () => {
   const searchValue = useSelector((state: RootState) => state.searchText.searchValue);
   const dispatch = useDispatch();
+
+  const [trigger] = useLazyGetImageByNameQuery();
 
   const onFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(updateSearchValue(e.target.value));
@@ -14,7 +17,7 @@ export const SearchBar = () => {
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    //fetchCards(searchValue.value);
+    trigger(searchValue.value);
   };
 
   return (
