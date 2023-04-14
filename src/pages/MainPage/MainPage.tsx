@@ -8,21 +8,23 @@ import { Card } from '../../models/unsplash';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { useGetImageByNameQuery } from '../../store/api';
-import { storeCard, updateCurrentPage, updateTotalCount } from '../../feature/searchTextSlice';
+import { useGetImagesQuery } from '../../store/api';
+import { updateCurrentPage, updateTotalCount } from '../../feature/searchTextSlice';
 
 export const MainPage = () => {
   const searchValue = useSelector((state: RootState) => state.searchText.searchValue);
 
   const dispatch = useDispatch();
 
-  const { data, isLoading, error } = useGetImageByNameQuery(searchValue.value);
+  const { data, isLoading, error } = useGetImagesQuery({
+    value: searchValue.value,
+    currentPage: searchValue.currentPage,
+    resultPerPage: searchValue.resultPerPage,
+    sortOrder: searchValue.sortOrder,
+  });
 
   useEffect(() => {
-    if (data) {
-      dispatch(storeCard(data));
-      dispatch(updateTotalCount(data.total_pages));
-    }
+    if (data) dispatch(updateTotalCount(data.total_pages));
   }, [data, dispatch]);
 
   const setPage = (currentPage: number) => {
