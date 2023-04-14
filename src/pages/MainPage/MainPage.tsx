@@ -35,14 +35,20 @@ export const MainPage = () => {
       const errMsg = 'error' in error ? error.error : JSON.stringify(error.data);
 
       return (
-        <div>
-          <div>An error has occurred:</div>
-          <div>{errMsg}</div>
+        <div className="main-page-wrapper" data-testid="main-page">
+          <div className="message-wrapper">
+            <div>An error has occurred:</div>
+            <div>{errMsg}</div>
+          </div>
         </div>
       );
     } else {
       // you can access all properties of `SerializedError` here
-      return <div>{error.message}</div>;
+      return (
+        <div className="main-page-wrapper" data-testid="main-page">
+          <div className="message-wrapper">{error.message}</div>
+        </div>
+      );
     }
   }
 

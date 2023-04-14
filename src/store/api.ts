@@ -15,7 +15,7 @@ export const imageApi = createApi({
 
   endpoints: (builder) => ({
     getImageByName: builder.query<ResponseData, string>({
-      query: (value: string) => `photos?&query=${value}`,
+      query: (value) => `photos?&query=${value}`,
       // extraOptions: {
       //   page: currentPage,
       //   per_page: isNaN(resultPerPage) ? 10 : resultPerPage,
@@ -30,4 +30,4 @@ export const imageApi = createApi({
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
-export const { useGetImageByNameQuery } = imageApi;
+export const { useGetImageByNameQuery, useLazyGetImageByNameQuery } = imageApi;
