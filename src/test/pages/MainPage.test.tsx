@@ -8,8 +8,9 @@ import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
 const handlers = [
-  rest.get('https://api.unsplash.com/search/photos?&query=', (req, res, ctx) => {
+  rest.get('https://api.unsplash.com/search/photos', (req, res, ctx) => {
     const isAuthenticated = sessionStorage.getItem('is-authenticated');
+    const query = req.url.searchParams.get('query');
 
     if (!isAuthenticated) {
       // If not authenticated, respond with a 403 error
@@ -21,7 +22,9 @@ const handlers = [
       );
     }
 
-    return res(ctx.json('goa'), ctx.delay(150));
+    if (query === 'goa') {
+      return res(ctx.json('goa'), ctx.delay(150));
+    }
   }),
 ];
 
@@ -46,9 +49,5 @@ describe('MainPage ', () => {
 
   test('should be shown', () => {
     expect(screen.getByText(/search/i)).toBeTruthy();
-  });
-
-  test('should show error', () => {
-    expect(screen.getByText(/Request is not defined/i)).toBeTruthy();
   });
 });

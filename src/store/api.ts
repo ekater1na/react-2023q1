@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ResponseData } from '../models/unsplash';
 import { SearchParams } from '../models/searchParams';
+import 'whatwg-fetch';
 
 // Define a service using a base URL and expected endpoints
 export const imageApi = createApi({
@@ -11,6 +12,7 @@ export const imageApi = createApi({
       headers.set('Authorization', 'Client-ID Yme6ZcumIXpWryQ0DPc249CE0ua2Mxh66Y-4W2gPAAc');
       return headers;
     },
+    fetchFn: fetch,
   }),
   tagTypes: ['searchResult'],
 
