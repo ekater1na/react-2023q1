@@ -10,7 +10,10 @@ export const store = configureStore({
     searchText: searchTextReducer,
     form: formReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(imageApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(imageApi.middleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
