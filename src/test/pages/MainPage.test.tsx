@@ -1,11 +1,23 @@
 import { describe, expect, test } from 'vitest';
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MainPage } from '../../pages/MainPage/MainPage';
 import { Provider } from 'react-redux';
 import { store } from '../../store/store';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+
+import nodeFetch, { Request, Response } from 'node-fetch';
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
+global.fetch = nodeFetch;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
+global.Request = Request;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
+global.Response = Response;
 
 const handlers = [
   rest.get('https://api.unsplash.com/search/photos', (req, res, ctx) => {
@@ -39,15 +51,14 @@ afterEach(() => server.resetHandlers());
 // Disable API mocking after the tests are done.
 afterAll(() => server.close());
 describe('MainPage ', () => {
-  beforeEach(() => {
+  test('should be shown', async () => {
     render(
       <Provider store={store}>
         <MainPage />
       </Provider>
     );
-  });
-
-  test('should be shown', () => {
-    expect(screen.getByText(/search/i)).toBeTruthy();
+    await waitFor(() => {
+      expect(screen.getByText(/search/i)).toBeTruthy();
+    });
   });
 });
