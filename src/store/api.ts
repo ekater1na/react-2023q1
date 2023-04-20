@@ -2,17 +2,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ResponseData } from '../models/unsplash';
 import { SearchParams } from '../models/searchParams';
 import 'whatwg-fetch';
-import nodeFetch, { Request, Response } from 'node-fetch';
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-global.fetch = nodeFetch;
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-global.Request = Request;
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-global.Response = Response;
 
 // Define a service using a base URL and expected endpoints
 export const imageApi = createApi({
