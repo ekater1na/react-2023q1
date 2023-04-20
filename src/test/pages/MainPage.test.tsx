@@ -7,18 +7,6 @@ import { store } from '../../store/store';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import nodeFetch, { Request, Response } from 'node-fetch';
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
-global.fetch = nodeFetch;
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
-global.Request = Request;
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
-global.Response = Response;
-
 const handlers = [
   rest.get('https://api.unsplash.com/search/photos', (req, res, ctx) => {
     const isAuthenticated = sessionStorage.getItem('is-authenticated');
