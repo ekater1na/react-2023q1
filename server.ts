@@ -8,6 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function createServer() {
   const app = express();
+  const PORT = process.env.PORT || 5173;
 
   // Create Vite server in middleware mode and configure the app type as
   // 'custom', disabling Vite's own HTML serving logic so parent server
@@ -60,7 +61,8 @@ async function createServer() {
     }
   });
 
-  app.listen(5173);
+  app.listen(PORT);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 }
 
 createServer();
