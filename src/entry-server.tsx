@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from './store/store';
 
 export const render = (url: string) => {
-  const stream = renderToPipeableStream(
+  return renderToPipeableStream(
     <React.StrictMode>
       <Provider store={store}>
         <StaticRouter location={url}>
@@ -16,5 +16,4 @@ export const render = (url: string) => {
       </Provider>
     </React.StrictMode>
   );
-  return stream;
 };
