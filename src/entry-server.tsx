@@ -1,12 +1,12 @@
 import React from 'react';
-import { renderToPipeableStream } from 'react-dom/server';
+import { renderToPipeableStream, RenderToPipeableStreamOptions } from 'react-dom/server';
 import App from './App';
 import { StaticRouter } from 'react-router-dom/server';
 import './index.scss';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 
-export const render = (url: string) => {
+export const render = (url: string, context: RenderToPipeableStreamOptions) => {
   return renderToPipeableStream(
     <React.StrictMode>
       <Provider store={store}>
@@ -14,6 +14,7 @@ export const render = (url: string) => {
           <App />
         </StaticRouter>
       </Provider>
-    </React.StrictMode>
+    </React.StrictMode>,
+    context
   );
 };
