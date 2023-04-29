@@ -4,10 +4,11 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import './index.scss';
 import { Provider } from 'react-redux';
-import { store } from './store/store';
+import { initStore } from './store/store';
 
 const container = document.getElementById('root');
 
+const store = initStore(window.__PRELOADED_STATE__ ?? undefined);
 const FullApp = () => (
   <React.StrictMode>
     <Provider store={store}>

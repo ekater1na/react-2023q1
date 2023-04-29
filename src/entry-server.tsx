@@ -4,9 +4,15 @@ import App from './App';
 import { StaticRouter } from 'react-router-dom/server';
 import './index.scss';
 import { Provider } from 'react-redux';
-import { store } from './store/store';
+import { initStore, RootState } from './store/store';
+import { preloadData } from './server/preloadData';
 
-export const render = (url: string, context: RenderToPipeableStreamOptions) => {
+const store = initStore();
+
+export const render = async (url: string, context: RenderToPipeableStreamOptions) => {
+  await preloadData(store);
+  const preloadStore: RootState = { ...store.getState() };
+
   return renderToPipeableStream(
     <React.StrictMode>
       <Provider store={store}>
@@ -15,6 +21,6 @@ export const render = (url: string, context: RenderToPipeableStreamOptions) => {
         </StaticRouter>
       </Provider>
     </React.StrictMode>,
-    context
+    { bootstrapScriptContent: `window.__PRELOADED_STATE__ = ${JSON.stringify(preloadStore)}` }
   );
 };
