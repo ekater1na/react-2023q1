@@ -28,4 +28,12 @@ describe('Form page', () => {
 
     cy.get('form').find("input[type='date']").should('have.value', '2023-01-01');
   });
+
+  it('should contain select', () => {
+    cy.get('form').find('select').should('have.attr', 'placeholder', 'Country');
+
+    cy.get('form').find('select').select('Belarus');
+
+    cy.get('form').find('select').should('have.value', 'BY');
+  });
 });
