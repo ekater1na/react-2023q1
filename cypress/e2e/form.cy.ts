@@ -1,12 +1,31 @@
 /// <reference types="cypress" />
 
-describe('Text box with max characters', () => {
-  it('display the appropriate remaining character count', () => {
+describe('Form page', () => {
+  beforeEach(() => {
     cy.visit('/forms');
-    cy.get('form').find('input').first().should('have.attr', 'placeholder', 'First name');
+  });
 
-    cy.get('form').find('input').first().type('hi');
+  it('should contain form', () => {
+    cy.get('form').should('be.visible');
+    cy.get("input[type='submit']");
+  });
 
-    cy.get('form').find('input').first().should('have.value', 'hi');
+  it('should contain text input', () => {
+    cy.get('form')
+      .find("input[type='text']")
+      .first()
+      .should('have.attr', 'placeholder', 'First name');
+
+    cy.get('form').find("input[type='text']").first().type('ann');
+
+    cy.get('form').find("input[type='text']").first().should('have.value', 'ann');
+  });
+
+  it('should contain date input', () => {
+    cy.get('form').find("input[type='date']").should('have.attr', 'placeholder', 'Birthday');
+
+    cy.get('form').find("input[type='date']").type('2023-01-01');
+
+    cy.get('form').find("input[type='date']").should('have.value', '2023-01-01');
   });
 });

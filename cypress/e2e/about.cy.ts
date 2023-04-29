@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
-describe('Heading text', () => {
-  it('contains the correct title', () => {
+describe('About page', () => {
+  it('should be shown', () => {
     cy.visit('/about/');
     cy.get('span').invoke('text').should('equal', 'About');
   });

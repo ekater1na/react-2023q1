@@ -16,5 +16,6 @@ export default defineConfig({
       codeCoverageTask(on, config);
       return config;
     },
+    screenshotOnRunFailure: false,
   },
 });
