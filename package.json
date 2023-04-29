@@ -14,6 +14,12 @@
     "lint:fix": "eslint --fix",
     "format": "npx prettier --write .",
     "test": "vitest",
+    "cy": "cypress open",
+    "cy:open-e2e": "cypress open --e2e --browser chrome",
+    "cy:open-unit": "cypress open --component --browser chrome",
+    "cy:run-e2e": "cypress run --e2e",
+    "cy:run-unit": "cypress run --component",
+    "cy:e2e": "start-server-and-test start http-get://localhost:5173 cy:open-e2e",
     "coverage": "vitest run --coverage"
   },
   "husky": {
@@ -43,8 +49,11 @@
     "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.10.4",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
+    "@types/cypress__code-coverage": "^3.10.0",
     "@types/express": "^4.17.17",
     "@types/lodash": "^4.14.192",
     "@types/node-fetch": "^2.6.3",
@@ -55,6 +64,7 @@
     "@typescript-eslint/parser": "^5.55.0",
     "@vitejs/plugin-react": "^3.1.0",
     "@vitest/coverage-c8": "^0.29.3",
+    "cypress": "^12.11.0",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-import-resolver-typescript": "^3.5.3",
@@ -66,9 +76,14 @@
     "jsdom": "^21.1.1",
     "lint-staged": "^13.2.0",
     "msw": "^1.2.1",
+    "nyc": "^15.1.0",
     "prettier": "^2.8.4",
+    "source-map-support": "^0.5.21",
+    "start-server-and-test": "^2.0.0",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
+    "vite-plugin-istanbul": "^4.0.1",
     "vitest": "^0.29.3"
   }
 }
