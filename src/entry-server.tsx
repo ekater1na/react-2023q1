@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderToPipeableStream, RenderToPipeableStreamOptions } from 'react-dom/server';
+import { renderToPipeableStream } from 'react-dom/server';
 import App from './App';
 import { StaticRouter } from 'react-router-dom/server';
 import './index.scss';
@@ -9,11 +9,12 @@ import { preloadData } from './server/preloadData';
 
 const store = initStore();
 
-export const render = async (url: string, context: RenderToPipeableStreamOptions) => {
+export const render = async (url: string) => {
   await preloadData(store);
+
   const preloadStore: RootState = { ...store.getState() };
 
-  return renderToPipeableStream(
+  renderToPipeableStream(
     <React.StrictMode>
       <Provider store={store}>
         <StaticRouter location={url}>
@@ -21,6 +22,9 @@ export const render = async (url: string, context: RenderToPipeableStreamOptions
         </StaticRouter>
       </Provider>
     </React.StrictMode>,
-    { bootstrapScriptContent: `window.__PRELOADED_STATE__ = ${JSON.stringify(preloadStore)}` }
+    {
+      bootstrapScriptContent: `window.__PRELOADED_STATE__ = ${JSON.stringify(preloadStore)}`,
+      bootstrapModules: ['./src/entry-client.tsx'],
+    }
   );
 };
