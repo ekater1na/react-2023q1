@@ -13,6 +13,8 @@ dist-ssr
 *.local
 
 coverage
+.nyc_output
+.cypress/screeshots
 
 # Editor directories and files
 .vscode/*

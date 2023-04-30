@@ -7,6 +7,18 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from '../../store/store';
 
+import nodeFetch, { Request, Response } from 'node-fetch';
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+global.fetch = nodeFetch;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+global.Request = Request;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+global.Response = Response;
+
 describe('App', () => {
   it('should be shown', async () => {
     render(
